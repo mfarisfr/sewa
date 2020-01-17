@@ -1,7 +1,3 @@
- <!--bagian yang kuubah for faris-->
- <!-- <aside class="main-sidebar sidebar-dark-primary elevation-4">
-      <a href="index3.html" class="brand-link">
-         <a href="#" class="nav-link">log Out</a> -->
 @layout('template/main/karyawan/main')
 
 @section('content')

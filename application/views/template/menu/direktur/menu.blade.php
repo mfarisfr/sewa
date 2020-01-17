@@ -9,27 +9,27 @@
     <ul class="nav nav-treeview">
         <li class="nav-item">
             <a href="{{base_url('barang/dashboard')}}" class="nav-link
-            ">     
-               <i class="far fa-circle nav-icon"></i>
-               <p>Pemberitahuan</p>
+            ">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Pemberitahuan</p>
             </a>
         </li>
-        
-        
+
+
         <li class="nav-item">
-            <a href="{{base_url('karyawan/peminjaman')}}" class="nav-link">
+            <a href="{{base_url('direktur/peminjaman')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Peminjaman Mobil</p>
             </a>
         </li>
-        
+
         <li class="nav-item">
             <a href="{{base_url('barang/tambahbarang')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Cetak</p>
             </a>
         </li>
-        
+
     </ul>
 </li>
 <li class="nav-item">

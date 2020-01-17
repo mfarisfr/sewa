@@ -17,7 +17,7 @@
         
         
         <li class="nav-item">
-            <a href="{{base_url('karyawan/peminjaman')}}" class="nav-link">
+            <a href="{{base_url('kepala/peminjaman')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Peminjaman Mobil</p>
             </a>
@@ -29,7 +29,28 @@
                 <p>Cetak</p>
             </a>
         </li>
+
+        <li class="nav-item">
+            <a href="{{base_url('kepala/konfirmasipinjam')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Konfirmasi Peminjaman</p>
+            </a>
+        </li>
         
+        <li class="nav-item">
+            <a href="{{base_url('kepala/bayarpajak')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Pembayaran Pajak Mobil</p>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="{{base_url('kepala/ker_awal')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Tambah Kerusakan Awal Mobil</p>
+            </a>
+        </li>
+
     </ul>
 </li>
 <li class="nav-item">
