@@ -49,18 +49,129 @@ class Kepala extends MY_Controller
 		$this->blade->render('konfirmasipinjamkep', $data);
 	}
 
-	public function bayarpajak()
+	public function kirimdirektur()
+	{
+		$data['id_pinjam_kar'] = $_GET['u'];
+		$data['title']="YAYASAN SINAI INDONESIA";
+		$data['subtitle']="YAYASAN SINAI INDONESIA";
+		$this->blade->render('formkonfirmasipinjam',$data);
+	}
+
+	public function pajakawal()
 	{
 		$data['title'] = "YAYASAN SINAI INDONESIA";
-		$data['subtitle'] = "Pembayaran Pajak Mobil";
-		$this->blade->render('formbayarpajak', $data);
+		$data['subtitle'] = "Pajak Awal Mobil";
+		$data['daftarm']=$this->model->getMobil();
+		$this->blade->render('formpajakawal', $data);
+		if (isset($_POST['submit'])) {
+			$plat = $this->input->post('plat');
+			$tgl_pajak = $this->input->post('tgl_pajak');
+			$harga = $this->input->post('harga');
+			$this->model->insertpajak($plat, $tgl_pajak, $harga);
+			redirect('kepala/pajak');
+		}
 	}
 
 	public function ker_awal()
 	{
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "Kerusakan Awal Mobil";
+		$data['daftarm']=$this->model->getMobil();
 		$this->blade->render('tambah_ker_awal', $data);
+		if (isset($_POST['submit'])) {
+			$plat = $this->input->post('plat');
+			$kondisi = $this->input->post('kondisi');
+			// $harga = $this->input->post('harga');
+			$this->model->insertlistker($plat, $kondisi);
+			redirect('kepala');
+		}
 		
+	}
+
+	public function tampilmobil()
+    { 
+        $data['title'] = "YAYASAN SINAI INDONESIA";
+		$data['subtitle'] = "Daftar Mobil";
+		$data['daftarm']=$this->model->getMobil();
+		$this->blade->render('tampilmobil', $data);
+	}
+
+	public function tambahdaftarmobil()
+	{
+		$data['title'] = "YAYASAN SINAI INDONESIA";
+		$data['subtitle'] = "Tambah Data Mobil";
+		$this->blade->render('formtambahmobil', $data);
+		if (isset($_POST['submit'])) {
+			$plat = $this->input->post('plat');
+			$nama_pemilik = $this->input->post('nama_pemilik');
+			$alamat = $this->input->post('alamat');
+			$tahun = $this->input->post('tahun');
+			$merk_type = $this->input->post('merk_type');
+			$jenis_model = $this->input->post('jenis_model');
+			$warna_kb = $this->input->post('warna_kb');
+			$isi_silinder = $this->input->post('isi_silinder');
+			$no_rangka = $this->input->post('no_rangka');
+			$no_mesin = $this->input->post('no_mesin');
+			$no_bpkb = $this->input->post('no_bpkb');
+			$bahan_bakar = $this->input->post('bahan_bakar');
+			$warna_tnkb = $this->input->post('warna_tnkb');
+			$this->model->insermobil($plat, $nama_pemilik,$alamat,$tahun,$merk_type,$jenis_model,$warna_kb,$isi_silinder,$no_rangka,$no_mesin,$no_bpkb,
+		$bahan_bakar,$warna_tnkb);
+			redirect('kepala/tampilmobil');
+		}
+	}
+
+	public function pajak()
+	{
+		$data['title'] = "YAYASAN SINAI INDONESIA";
+		$data['subtitle'] = "Pajak Mobil";
+		$data['daftarp']=$this->model->getPajak();
+		$this->blade->render('pajak', $data);
+	}
+
+	public function pembaruanpajak()
+	{
+		$id_pajak = $_GET['u'];
+		$data['title'] = "YAYASAN SINAI INDONESIA";
+		$data['subtitle'] = "Pajak Mobil";
+		$data['paj'] = $this->model->get_by_id_pajak("pajak",$id_pajak);
+		$this->blade->render('formpembaruanpajak', $data);
+	}
+
+	public function editpajak()
+    {
+		if (isset($_POST['perbarui'])) {
+			$id_pajak = $this->input->post('id_pajak');
+			$plat = $this->input->post('plat');
+			$tgl_pajak = $this->input->post('tgl_pajak');
+			$tgl_bayar = $this->input->post('tgl_bayar');
+			$harga = $this->input->post('harga');
+			$this->model->insertHistoriPajak($id_pajak,$plat, $tgl_pajak,$tgl_bayar, $harga);
+			$pw = array(
+				'id_pajak'=>$id_pajak,
+				'plat'=>$plat,
+				'tgl_pajak'=>$tgl_pajak,
+				'harga' => $harga
+			);
+			$where = array('id_pajak'=>$id_pajak);
+			$this->model->updatePajak("pajak", $pw, $where);
+			redirect('kepala/pajak');
+		}
+	}
+
+	public function histori_pajak()
+	{
+		$data['title'] = "YAYASAN SINAI INDONESIA";
+		$data['subtitle'] = "Pajak Mobil";
+		$data['daftarp']=$this->model->getHistoriPajak();
+		$this->blade->render('historipajak', $data);
+	}
+
+	public function maintenance()
+	{
+		$data['title'] = "YAYASAN SINAI INDONESIA";
+		$data['subtitle'] = "Maintenance Mobil";
+		$data['daftarm']=$this->model->getListKer();
+		$this->blade->render('maintenanceM', $data);
 	}
  }

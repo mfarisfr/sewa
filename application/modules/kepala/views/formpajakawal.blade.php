@@ -2,9 +2,10 @@
 
 @section('content')
 <center>
-    <h1>FORM Kerusakan Awal Mobil</h1>
+    <h1>Pajak Awal Mobil</h1>
 </center>
-<form method="POST" action="{{base_url('kepala/ker_awal')}}">
+<h2>Silahkan input data pajak awal :</h2>
+<form  method="POST" action="{{base_url('kepala/pajakawal')}}">
     <div class="form-group">
         <label for="plat">Plat Mobil</label>
         <select name="plat" class="form-control">
@@ -16,15 +17,16 @@
     </div>
 
     <div class="form-group">
-        <label for="kondisi">Kondisi</label>
-        <input type="text" name="kondisi" class="form-control">
+        <label for="harga">Harga</label>
+        <input type="number" name="harga" class="form-control" placeholder="Masukan Harga pajak">
     </div>
 
     <div class="form-group">
-        <label for="tanggal">Tanggal</label>
-        <input type="date" name="tanggal" class="form-control">
+        <label for="tgl_pajak">Tanggal Pajak</label>
+        <input type="date" name="tgl_pajak" class="form-control" placeholder="Masukan Tanggal berlaku pajak">
     </div>
 
-    <button name="submit" type="submit" class="btn btn-primary">Tambah</button>
+    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
 </form>
+
 @endsection

@@ -8,7 +8,7 @@
     </a>
     <ul class="nav nav-treeview">
         <li class="nav-item">
-            <a href="{{base_url('barang/dashboard')}}" class="nav-link
+            <a href="#" class="nav-link
             ">     
                <i class="far fa-circle nav-icon"></i>
                <p>Pemberitahuan</p>
@@ -24,7 +24,7 @@
         </li>
         
         <li class="nav-item">
-            <a href="{{base_url('barang/tambahbarang')}}" class="nav-link">
+            <a href="#" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Cetak</p>
             </a>
@@ -38,16 +38,23 @@
         </li>
         
         <li class="nav-item">
-            <a href="{{base_url('kepala/bayarpajak')}}" class="nav-link">
+            <a href="{{base_url('kepala/pajak')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Pembayaran Pajak Mobil</p>
+                <p>Pajak Mobil</p>
             </a>
         </li>
 
         <li class="nav-item">
-            <a href="{{base_url('kepala/ker_awal')}}" class="nav-link">
+            <a href="{{base_url('kepala/maintenance')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Tambah Kerusakan Awal Mobil</p>
+                <p>Maintenance Mobil</p>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="{{base_url('kepala/tampilmobil')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Data Mobil</p>
             </a>
         </li>
 

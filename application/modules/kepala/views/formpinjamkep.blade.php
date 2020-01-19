@@ -4,7 +4,7 @@
 <center>
     <h1>FORM PEMINJAMAN Mobil</h1>
 </center>
-<form method="POST" action="{{base_url('karyawan/peminjaman')}}">
+<form method="POST" action="{{base_url('kepala/peminjaman')}}">
 
     <p>Silahkah melakukan pengisian data di bawah ini :</p>
     <div class="form-group">

@@ -4,47 +4,47 @@
 <center>
     <h1>Konfirmasi Peminjaman</h1>
 </center>
-<table border="1" width="800" align="center">
-    <thead>
+<table class="table">
+    <thead class="thead-light">
         <tr>
-            <th>No</th>
-            <th>Nama Peminjam</th>
-            <th>Tanggal Pinjam</th>
-            <th>Waktu Pinjam</th>
-            <th>Tanggal Kembali</th>
-            <th>Waktu Kembali</th>
-            <th>Tempat</th>
-            <th>Acara</th>
-            <th>Plat</th>
-            <th>Merk/type</th>
-            <th>KM Awal</th>
-            <th>KM akhir</th>
-            <th>Kondisi Awal</th>
-            <th>Kondisi Akhir</th>
-            <th>Status</th>
-            <th>Aksi</th>
+            <th scope="col">Id Pinjam Karyawan</th>
+            <th scope="col">Nama Peminjam</th>
+            <th scope="col">Tanggal Pinjam</th>
+            <th scope="col">Waktu Pinjam</th>
+            <th scope="col">Tanggal Kembali</th>
+            <th scope="col">Waktu Kembali</th>
+            <th scope="col">Tempat</th>
+            <th scope="col">Acara</th>
+            <th scope="col">Status</th>
+            <th scope="col">Aksi</th>
         </tr>
     </thead>
     <tbody>
         <?php foreach ($daftarp as $dp) :
         ?>
             <tr>
-                <td>#</td>
+                <td><?= $id = $dp['id_pinjam_kar'] ?></td>
                 <td><?= $dp['nama'] ?></td>
                 <td><?= $dp['tgl_pinjam'] ?></td>
                 <td><?= $dp['waktu_pinjam'] ?></td>
                 <td><?= $dp['tgl_kembali'] ?></td>
                 <td><?= $dp['waktu_kembali'] ?></td>
                 <td><?= $dp['tempat'] ?></td>
-                <td><?= $dp['acara']?></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><?= $dp['acara'] ?></td>
+                <td>
+                    <div class="form-group">
+                        <select name="status" class="form-control">
+                            <option value="1">Menunggu</option>
+                            <option value="0">Ditolak</option>
+                            <option value="2">Konfirmasi Kepala</option>
+                        </select>
+                    </div>
+                </td>
+                <td>
+                    <a href="<?= base_url('kepala/kirimdirektur?u=' . $id); ?>">
+                        <button class="btn btn-primary">Kirim</button>
+                    </a>
+                </td>
             </tr>
         <?php
         endforeach;
