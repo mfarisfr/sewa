@@ -53,7 +53,8 @@ class Kepala extends MY_Controller
 	{
 		$data['id_pinjam_kar'] = $_GET['u'];
 		$data['title']="YAYASAN SINAI INDONESIA";
-		$data['subtitle']="YAYASAN SINAI INDONESIA";
+		$data['subtitle'] = "Form Tanggapan";
+		$data['daftarm']=$this->model->getMobil();
 		$this->blade->render('formkonfirmasipinjam',$data);
 	}
 
@@ -83,7 +84,7 @@ class Kepala extends MY_Controller
 			$kondisi = $this->input->post('kondisi');
 			// $harga = $this->input->post('harga');
 			$this->model->insertlistker($plat, $kondisi);
-			redirect('kepala');
+			redirect('kepala/maintenance');
 		}
 		
 	}
@@ -173,5 +174,40 @@ class Kepala extends MY_Controller
 		$data['subtitle'] = "Maintenance Mobil";
 		$data['daftarm']=$this->model->getListKer();
 		$this->blade->render('maintenanceM', $data);
+	}
+
+	public function pembaruanmobil()
+	{
+		$id_listker = $_GET['u'];
+		$data['title'] = "YAYASAN SINAI INDONESIA";
+		$data['subtitle'] = "Perbaikan Mobil";
+		$data['per'] = $this->model->get_by_id_listker("list_kerusakan",$id_listker);
+		$this->blade->render('formperbaikanmobil', $data);
+	}
+
+	public function perbaikanmobil()
+    {
+		if (isset($_POST['perbarui'])) {
+			$id_listker = $this->input->post('id_listker');
+			$plat = $this->input->post('plat');
+			$kondisi = $this->input->post('kondisi');
+			$tgl_perbaikan = $this->input->post('tgl_perbaikan');
+			$this->model->insertHistoriMaintenance($id_listker,$plat, $kondisi,$tgl_perbaikan);
+			$pw = array(
+				'plat'=>$plat,
+				'kondisi'=>'',
+			);
+			$where = array('id_listker'=>$id_listker);
+			$this->model->updateKerusakan("list_kerusakan", $pw, $where);
+			redirect('kepala/maintenance');
+		}
+	}
+
+	public function histori_maintenance()
+	{
+		$data['title'] = "YAYASAN SINAI INDONESIA";
+		$data['subtitle'] = "Pajak Mobil";
+		$data['daftarm']=$this->model->getHistoriMaintenance();
+		$this->blade->render('histori_maintenance', $data);
 	}
  }

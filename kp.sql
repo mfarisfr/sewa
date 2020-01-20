@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 13 Jan 2020 pada 13.42
+-- Waktu pembuatan: 19 Jan 2020 pada 12.36
 -- Versi server: 10.1.36-MariaDB
 -- Versi PHP: 7.2.10
 
@@ -64,6 +64,14 @@ CREATE TABLE `histori_pajak` (
   `harga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `histori_pajak`
+--
+
+INSERT INTO `histori_pajak` (`id_his_pajak`, `id_pajak`, `plat`, `tgl_pajak`, `tgl_bayar`, `harga`) VALUES
+(2, 4, 'kt1759nb', '2021-07-17', '0000-00-00', 809999),
+(4, 5, 'AB1729BX', '2021-06-09', '2020-01-19', 275000);
+
 -- --------------------------------------------------------
 
 --
@@ -74,6 +82,13 @@ CREATE TABLE `histori_pinjam` (
   `id_his_pinjam` int(11) NOT NULL,
   `id_pinjam` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `histori_pinjam`
+--
+
+INSERT INTO `histori_pinjam` (`id_his_pinjam`, `id_pinjam`) VALUES
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -115,6 +130,13 @@ CREATE TABLE `list_kerusakan` (
   `kondisi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `list_kerusakan`
+--
+
+INSERT INTO `list_kerusakan` (`id_listker`, `plat`, `kondisi`) VALUES
+(2, 'AB1729BX', 'Penyok Bagian Kiri Belakang');
+
 -- --------------------------------------------------------
 
 --
@@ -125,8 +147,8 @@ CREATE TABLE `mobil` (
   `plat` varchar(10) NOT NULL,
   `nama_pemilik` varchar(50) NOT NULL,
   `alamat` varchar(100) NOT NULL,
-  `merk/type` varchar(50) NOT NULL,
-  `jenis/model` varchar(50) NOT NULL,
+  `merk_type` varchar(50) NOT NULL,
+  `jenis_model` varchar(50) NOT NULL,
   `tahun` varchar(4) NOT NULL,
   `warna_kb` varchar(10) NOT NULL,
   `isi_silinder` varchar(6) NOT NULL,
@@ -136,6 +158,14 @@ CREATE TABLE `mobil` (
   `bahan_bakar` varchar(10) NOT NULL,
   `warna_tnkb` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `mobil`
+--
+
+INSERT INTO `mobil` (`plat`, `nama_pemilik`, `alamat`, `merk_type`, `jenis_model`, `tahun`, `warna_kb`, `isi_silinder`, `no_rangka`, `no_mesin`, `no_bpkb`, `bahan_bakar`, `warna_tnkb`) VALUES
+('AB1729BX', 'rahman', 'Maguwoharjo', 'Xenia LX', 'Minibus', '2019', 'Biru', '1700', 'tsg73627ggxtw666', 'gsaasg62627sasaa', 'agsga676', 'Solar', 'Biru'),
+('kt1759nb', 'Rahman', 'Jl Msaid Samarinda', 'Toyota Avanza G', 'Minibus', '2017', 'Hitam', '1800', '828dhdh992910', 'ssa92839902n', 'dhdkwi993hs', 'Bensin', 'Hitam');
 
 -- --------------------------------------------------------
 
@@ -149,6 +179,14 @@ CREATE TABLE `pajak` (
   `tgl_pajak` date NOT NULL,
   `harga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `pajak`
+--
+
+INSERT INTO `pajak` (`id_pajak`, `plat`, `tgl_pajak`, `harga`) VALUES
+(4, 'kt1759nb', '2021-07-17', 809999),
+(5, 'AB1729BX', '2021-06-09', 275000);
 
 -- --------------------------------------------------------
 
@@ -166,6 +204,13 @@ CREATE TABLE `pinjam` (
   `kerusakan_akhir` text NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `pinjam`
+--
+
+INSERT INTO `pinjam` (`id_pinjam`, `id_pinjam_kar`, `plat`, `km_awal`, `km_akhir`, `kerusakana_awal`, `kerusakan_akhir`, `status`) VALUES
+(1, 1, 'kt1759nb', 10000, 12500, 'penyok samping body', '', 4);
 
 -- --------------------------------------------------------
 
@@ -189,7 +234,11 @@ CREATE TABLE `pinjam_kar` (
 --
 
 INSERT INTO `pinjam_kar` (`id_pinjam_kar`, `id_karyawan`, `tgl_pinjam`, `waktu_pinjam`, `tgl_kembali`, `waktu_kembali`, `tempat`, `acara`) VALUES
-(1, '1', '2020-01-01', '14:02:00', '0002-02-02', '14:02:00', 'kampus', 'kematian');
+(1, '1', '2020-01-01', '14:02:00', '0002-02-02', '14:02:00', 'kampus', 'kematian'),
+(2, '3', '2020-01-01', '14:02:00', '2020-03-03', '15:03:00', 'rumah', 'keluarga'),
+(3, '2', '2020-01-09', '01:03:00', '2020-03-12', '15:03:00', 'sekolah', 'liburan'),
+(4, '1', '2020-01-18', '01:02:00', '2020-01-19', '01:02:00', 'Sekolah', 'Arisan'),
+(5, '2', '2020-01-01', '13:11:00', '2020-01-02', '13:01:00', 'disini', 'rahasia');
 
 --
 -- Indexes for dumped tables
@@ -294,37 +343,37 @@ ALTER TABLE `histori_maintenance`
 -- AUTO_INCREMENT untuk tabel `histori_pajak`
 --
 ALTER TABLE `histori_pajak`
-  MODIFY `id_his_pajak` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_his_pajak` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `histori_pinjam`
 --
 ALTER TABLE `histori_pinjam`
-  MODIFY `id_his_pinjam` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_his_pinjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `list_kerusakan`
 --
 ALTER TABLE `list_kerusakan`
-  MODIFY `id_listker` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_listker` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `pajak`
 --
 ALTER TABLE `pajak`
-  MODIFY `id_pajak` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pajak` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `pinjam`
 --
 ALTER TABLE `pinjam`
-  MODIFY `id_pinjam` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pinjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `pinjam_kar`
 --
 ALTER TABLE `pinjam_kar`
-  MODIFY `id_pinjam_kar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pinjam_kar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

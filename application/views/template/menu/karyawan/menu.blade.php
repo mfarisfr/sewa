@@ -8,7 +8,7 @@
     </a>
     <ul class="nav nav-treeview">
         <li class="nav-item">
-            <a href="{{base_url('barang/dashboard')}}" class="nav-link
+            <a href="#" class="nav-link
             ">     
                <i class="far fa-circle nav-icon"></i>
                <p>Pemberitahuan</p>
@@ -24,7 +24,7 @@
         </li>
         
         <li class="nav-item">
-            <a href="{{base_url('barang/tambahbarang')}}" class="nav-link">
+            <a href="#" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Cetak</p>
             </a>

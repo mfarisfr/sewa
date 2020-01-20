@@ -79,4 +79,36 @@ class KepalaModel extends CI_Model
         $sql = "SELECT * from list_kerusakan";
         return $this->db->query($sql)->result_array();
     }
+
+
+    public function get_by_id_listker($table,$id_listker)
+    {
+        $user = $this->db->get_where($table,array("id_listker"=>$id_listker));
+        return $user->row_array();
+    }
+
+    public function insertHistoriMaintenance($id_listker,$plat, $kondisi,$tgl_perbaikan)
+    {
+        $sql = "insert into histori_maintenance values ('','$id_listker','$plat','$kondisi','$tgl_perbaikan')";
+        $this->db->query($sql);
+    }
+
+    public function updateKerusakan($table, $set, $where)
+    {
+        return $this->db
+					->where($where)
+					->update($table, $set);
+    }
+
+    public function getHistoriMaintenance()
+    {
+        $sql = "SELECT * from histori_maintenance";
+        return $this->db->query($sql)->result_array();
+    }
+    // public function getJoinListKer()
+    // {
+    //     $sql = "SELECT L.*,M.* from list_kerusakan L inner join mobil M on L.plat=M.plat";
+    //     return $this->db->query($sql)->result_array();
+    // }
+
 }

@@ -9,24 +9,21 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">No</th>
                         <th scope="col">Plat Mobil</th>
                         <th scope="col">Kondisi</th>
-                        <th scope="col">Tanggal</th>
+                        <th scope="col">Tanggal Perbaikan</th>
                     </tr>
                 </thead>
-                <?php $no = 1;
+                <?php
                 foreach ($daftarm as $a) :
                 ?>
                     <tr>
-                        <td><?php echo $no; ?></td>
                         <td><?php echo $a['plat']; ?></td>
                         <td><?php echo $a['kondisi']; ?></td>
-                        <td><?php echo $a['tanggal']; ?></td>
+                        <td><?php echo $a['tgl_perbaikan']; ?></td>
 
                     </tr>
                 <?php
-                    $no++;
                 endforeach;
                 ?>
 

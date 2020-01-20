@@ -42,7 +42,7 @@
                 </td>
                 <td>
                     <a href="<?= base_url('kepala/kirimdirektur?u=' . $id); ?>">
-                        <button class="btn btn-primary">Kirim</button>
+                        <button class="btn btn-primary">Tanggapi</button>
                     </a>
                 </td>
             </tr>
