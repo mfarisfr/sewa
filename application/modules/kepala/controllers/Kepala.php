@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Kepala extends MY_Controller
 {
-	
+
 	function __construct()
 	{
 		parent::__construct();
@@ -18,9 +18,9 @@ class Kepala extends MY_Controller
 
 	public function index()
 	{
-		$data['title']="YAYASAN SINAI INDONESIA";
-		$data['subtitle']="YAYASAN SINAI INDONESIA";
-		$this->blade->render('kepala',$data);
+		$data['title'] = "YAYASAN SINAI INDONESIA";
+		$data['subtitle'] = "YAYASAN SINAI INDONESIA";
+		$this->blade->render('kepala', $data);
 	}
 
 	public function peminjaman()
@@ -41,28 +41,29 @@ class Kepala extends MY_Controller
 		}
 	}
 
-	public function konfirmasipinjam() 
+	public function konfirmasipinjam()
 	{
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "Konfirmasi Peminjaman Mobil";
-		$data['daftarp']=$this->model->getpinjam();
+		$data['daftarp'] = $this->model->getpinjam();
+		$data['daftarpk']= $this->model->getJoinPinjamKar();
 		$this->blade->render('konfirmasipinjamkep', $data);
 	}
 
 	public function kirimdirektur()
 	{
 		$data['id_pinjam_kar'] = $_GET['u'];
-		$data['title']="YAYASAN SINAI INDONESIA";
+		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "Form Tanggapan";
-		$data['daftarm']=$this->model->getMobil();
-		$this->blade->render('formkonfirmasipinjam',$data);
+		$data['daftarm'] = $this->model->getMobil();
+		$this->blade->render('formkonfirmasipinjam', $data);
 	}
 
 	public function pajakawal()
 	{
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "Pajak Awal Mobil";
-		$data['daftarm']=$this->model->getMobil();
+		$data['daftarm'] = $this->model->getMobil();
 		$this->blade->render('formpajakawal', $data);
 		if (isset($_POST['submit'])) {
 			$plat = $this->input->post('plat');
@@ -77,7 +78,7 @@ class Kepala extends MY_Controller
 	{
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "Kerusakan Awal Mobil";
-		$data['daftarm']=$this->model->getMobil();
+		$data['daftarm'] = $this->model->getMobil();
 		$this->blade->render('tambah_ker_awal', $data);
 		if (isset($_POST['submit'])) {
 			$plat = $this->input->post('plat');
@@ -86,14 +87,13 @@ class Kepala extends MY_Controller
 			$this->model->insertlistker($plat, $kondisi);
 			redirect('kepala/maintenance');
 		}
-		
 	}
 
 	public function tampilmobil()
-    { 
-        $data['title'] = "YAYASAN SINAI INDONESIA";
+	{
+		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "Daftar Mobil";
-		$data['daftarm']=$this->model->getMobil();
+		$data['daftarm'] = $this->model->getMobil();
 		$this->blade->render('tampilmobil', $data);
 	}
 
@@ -116,8 +116,21 @@ class Kepala extends MY_Controller
 			$no_bpkb = $this->input->post('no_bpkb');
 			$bahan_bakar = $this->input->post('bahan_bakar');
 			$warna_tnkb = $this->input->post('warna_tnkb');
-			$this->model->insermobil($plat, $nama_pemilik,$alamat,$tahun,$merk_type,$jenis_model,$warna_kb,$isi_silinder,$no_rangka,$no_mesin,$no_bpkb,
-		$bahan_bakar,$warna_tnkb);
+			$this->model->insermobil(
+				$plat,
+				$nama_pemilik,
+				$alamat,
+				$tahun,
+				$merk_type,
+				$jenis_model,
+				$warna_kb,
+				$isi_silinder,
+				$no_rangka,
+				$no_mesin,
+				$no_bpkb,
+				$bahan_bakar,
+				$warna_tnkb
+			);
 			redirect('kepala/tampilmobil');
 		}
 	}
@@ -126,7 +139,7 @@ class Kepala extends MY_Controller
 	{
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "Pajak Mobil";
-		$data['daftarp']=$this->model->getPajak();
+		$data['daftarp'] = $this->model->getPajak();
 		$this->blade->render('pajak', $data);
 	}
 
@@ -135,26 +148,25 @@ class Kepala extends MY_Controller
 		$id_pajak = $_GET['u'];
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "Pajak Mobil";
-		$data['paj'] = $this->model->get_by_id_pajak("pajak",$id_pajak);
+		$data['paj'] = $this->model->get_by_id_pajak("pajak", $id_pajak);
 		$this->blade->render('formpembaruanpajak', $data);
 	}
 
 	public function editpajak()
-    {
+	{
 		if (isset($_POST['perbarui'])) {
 			$id_pajak = $this->input->post('id_pajak');
 			$plat = $this->input->post('plat');
 			$tgl_pajak = $this->input->post('tgl_pajak');
 			$tgl_bayar = $this->input->post('tgl_bayar');
 			$harga = $this->input->post('harga');
-			$this->model->insertHistoriPajak($id_pajak,$plat, $tgl_pajak,$tgl_bayar, $harga);
+			$this->model->insertHistoriPajak($id_pajak, $plat, $tgl_pajak, $tgl_bayar, $harga);
 			$pw = array(
-				'id_pajak'=>$id_pajak,
-				'plat'=>$plat,
-				'tgl_pajak'=>$tgl_pajak,
+				'plat' => $plat,
+				'tgl_pajak' => $tgl_pajak,
 				'harga' => $harga
 			);
-			$where = array('id_pajak'=>$id_pajak);
+			$where = array('id_pajak' => $id_pajak);
 			$this->model->updatePajak("pajak", $pw, $where);
 			redirect('kepala/pajak');
 		}
@@ -164,7 +176,7 @@ class Kepala extends MY_Controller
 	{
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "Pajak Mobil";
-		$data['daftarp']=$this->model->getHistoriPajak();
+		$data['daftarp'] = $this->model->getHistoriPajak();
 		$this->blade->render('historipajak', $data);
 	}
 
@@ -172,7 +184,7 @@ class Kepala extends MY_Controller
 	{
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "Maintenance Mobil";
-		$data['daftarm']=$this->model->getListKer();
+		$data['daftarm'] = $this->model->getListKer();
 		$this->blade->render('maintenanceM', $data);
 	}
 
@@ -181,23 +193,23 @@ class Kepala extends MY_Controller
 		$id_listker = $_GET['u'];
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "Perbaikan Mobil";
-		$data['per'] = $this->model->get_by_id_listker("list_kerusakan",$id_listker);
+		$data['per'] = $this->model->get_by_id_listker("list_kerusakan", $id_listker);
 		$this->blade->render('formperbaikanmobil', $data);
 	}
 
 	public function perbaikanmobil()
-    {
+	{
 		if (isset($_POST['perbarui'])) {
 			$id_listker = $this->input->post('id_listker');
 			$plat = $this->input->post('plat');
 			$kondisi = $this->input->post('kondisi');
 			$tgl_perbaikan = $this->input->post('tgl_perbaikan');
-			$this->model->insertHistoriMaintenance($id_listker,$plat, $kondisi,$tgl_perbaikan);
+			$this->model->insertHistoriMaintenance($id_listker, $plat, $kondisi, $tgl_perbaikan);
 			$pw = array(
-				'plat'=>$plat,
-				'kondisi'=>'',
+				'plat' => $plat,
+				'kondisi' => '',
 			);
-			$where = array('id_listker'=>$id_listker);
+			$where = array('id_listker' => $id_listker);
 			$this->model->updateKerusakan("list_kerusakan", $pw, $where);
 			redirect('kepala/maintenance');
 		}
@@ -206,8 +218,68 @@ class Kepala extends MY_Controller
 	public function histori_maintenance()
 	{
 		$data['title'] = "YAYASAN SINAI INDONESIA";
-		$data['subtitle'] = "Pajak Mobil";
-		$data['daftarm']=$this->model->getHistoriMaintenance();
+		$data['subtitle'] = "Histori Maintenance";
+		$data['daftarm'] = $this->model->getHistoriMaintenance();
 		$this->blade->render('histori_maintenance', $data);
 	}
- }
+
+	public function konfirmpinjam()
+	{
+		if (isset($_POST['submit'])) {
+			$id_pinjam_kar = $this->input->post('id_pinjam_kar');
+			$plat = $this->input->post('plat');
+			$status = $this->input->post('status');
+			if ($status == "2") {
+				$k = $this->model->get_kondisi_by_plat($plat);
+				foreach ($k as $a) :
+					$kondisi = $a;
+				endforeach;
+				$this->model->insertKPinjam($id_pinjam_kar, $plat, $kondisi, $status);
+				redirect('kepala');
+			}
+		}
+	}
+
+	public function cekstatuspinjam()
+	{
+		$data['title'] = "YAYASAN SINAI INDONESIA";
+		$data['subtitle'] = "Pengecekan Status Peminjaman Mobil";
+		$data['daftarp'] = $this->model->getJoinPinjam();
+		$this->blade->render('cekpinjam', $data);
+	}
+
+	public function FormUpdatePinjam()
+	{
+		$id_pinjam = $_GET['u'];
+		$data['title'] = "YAYASAN SINAI INDONESIA";
+		$data['subtitle'] = "Pembaruan Peminjaman";
+		$data['pin'] = $this->model->get_by_id_pinjam("pinjam", $id_pinjam);
+		$this->blade->render('formpembaruanpinjam', $data);
+	}
+
+	public function perbaruipinjam()
+	{
+		if (isset($_POST['perbarui'])) {
+			$id_pinjam = $this->input->post('id_pinjam');
+			$plat = $this->input->post('plat');
+			$status = $this->input->post('status');
+			$km_awal = $this->input->post('km_awal');
+			$km_akhir = $this->input->post('km_akhir');
+			$kerusakan_akhir = $this->input->post('kondisi_akhir');
+			if($status==5){
+			$this->model->insertHistoriPeminjaman($id_pinjam);
+			}
+			
+			$pw = array(
+				'plat' => $plat,
+				'status' => $status,
+				'km_awal' => $km_awal,
+				'km_akhir' => $km_akhir,
+				'kerusakan_akhir' => $kerusakan_akhir
+			);
+			$where = array('id_pinjam' => $id_pinjam);
+			$this->model->updatePinjam("pinjam", $pw, $where);
+			redirect('kepala/cekstatuspinjam');
+		}
+	}
+}

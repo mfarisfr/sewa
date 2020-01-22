@@ -10,16 +10,19 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
+                        <th scope="col">No</th>
                         <th scope="col">Plat Mobil</th>
                         <th scope="col">Harga</th>
                         <th scope="col">Tanggal Pajak</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
-                <?php foreach ($daftarp as $a) :
+                <?php $no=1; 
+                foreach ($daftarp as $a) :
                 ?>
                 <?php $id = $a['id_pajak']; ?>
                     <tr>
+                        <td><?= $no; ?>
                         <td><?php echo $a['plat']; ?></td>
                         <td><?php echo $a['harga']; ?></td>
                         <td><?php echo $a['tgl_pajak']; ?></td>
@@ -29,6 +32,7 @@
                             </a>
                         </td>
                             <?php
+                            $no++;
                         endforeach;
                             ?>
         </div>

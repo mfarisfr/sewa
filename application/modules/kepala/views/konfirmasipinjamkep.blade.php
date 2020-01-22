@@ -15,12 +15,30 @@
             <th scope="col">Waktu Kembali</th>
             <th scope="col">Tempat</th>
             <th scope="col">Acara</th>
-            <th scope="col">Status</th>
+            <th scope="col">Status Tanggapan</th>
             <th scope="col">Aksi</th>
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($daftarp as $dp) :
+        <?php foreach ($daftarp as $dp) : ?>
+        <tr>
+        <td><?= $id = $dp['id_pinjam_kar'] ?></td>
+        <td><?= $dp['nama'] ?></td>
+        <td><?= $dp['tgl_pinjam'] ?></td>
+        <td><?= $dp['waktu_pinjam'] ?></td>
+        <td><?= $dp['tgl_kembali'] ?></td>
+        <td><?= $dp['waktu_kembali'] ?></td>
+        <td><?= $dp['tempat'] ?></td>
+        <td><?= $dp['acara'] ?></td>
+        <td></td>
+        <td>
+            <a href="<?= base_url('kepala/kirimdirektur?u=' . $id); ?>">
+                <button class="btn btn-primary">Tanggapi</button>
+            </a>
+        </td>
+    </tr>
+        <?php    foreach($daftarpk as $d) :
+                if($dp['id_pinjam_kar']==$d['id_pinjam_kar']){
         ?>
             <tr>
                 <td><?= $id = $dp['id_pinjam_kar'] ?></td>
@@ -31,15 +49,7 @@
                 <td><?= $dp['waktu_kembali'] ?></td>
                 <td><?= $dp['tempat'] ?></td>
                 <td><?= $dp['acara'] ?></td>
-                <td>
-                    <div class="form-group">
-                        <select name="status" class="form-control">
-                            <option value="1">Menunggu</option>
-                            <option value="0">Ditolak</option>
-                            <option value="2">Konfirmasi Kepala</option>
-                        </select>
-                    </div>
-                </td>
+                <td>Sudah Ditanggapi</td>
                 <td>
                     <a href="<?= base_url('kepala/kirimdirektur?u=' . $id); ?>">
                         <button class="btn btn-primary">Tanggapi</button>
@@ -47,6 +57,9 @@
                 </td>
             </tr>
         <?php
+                }
+            endforeach;?>
+            <?php
         endforeach;
         ?>
     </tbody>

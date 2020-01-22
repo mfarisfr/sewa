@@ -40,4 +40,61 @@ class Direktur extends MY_Controller
 			redirect('direktur');
 		}
 	}
+
+	public function histori_pajakdir()
+	{
+		$data['title'] = "YAYASAN SINAI INDONESIA";
+		$data['subtitle'] = "Pajak Mobil";
+		$data['daftarp'] = $this->model->getHistoriPajak();
+		$this->blade->render('historipajakdir', $data);
+	}
+
+	public function histori_maintenancedir()
+	{
+		$data['title'] = "YAYASAN SINAI INDONESIA";
+		$data['subtitle'] = "Maintenance Mobil";
+		$data['daftarm'] = $this->model->getHistoriMaintenance();
+		$this->blade->render('histori_maintenancedir', $data);
+	}
+
+	public function CekPeminjaman()
+	{
+		$data['title'] = "YAYASAN SINAI INDONESIA";
+		$data['subtitle'] = "Pengecekan Status Peminjaman Mobil";
+		$data['daftarp'] = $this->model->getJoinPinjam();
+		$this->blade->render('cekpinjamdir', $data);
+	}
+
+	public function konfirmasiPeminjaman()
+	{
+		$data['id_pinjam'] = $_GET['u'];
+		$data['title'] = "YAYASAN SINAI INDONESIA";
+		$data['subtitle'] = "Form Tanggapan";
+		$data['daftarp'] = $this->model->getPinjam();
+		$this->blade->render('formkonfirmasidir', $data);
+	}
+
+	public function konfirmpinjamdir()
+	{
+		if (isset($_POST['submit'])) {
+			$id_pinjam = $this->input->post('id_pinjam');
+			$status = $this->input->post('status');
+			if ($status == "3") {
+				$pw = array(
+					'status' => $status
+				);
+				$where = array('id_pinjam' => $id_pinjam);
+				$this->model->updatePinjam("pinjam", $pw, $where);
+				redirect('direktur/CekPeminjaman');
+			}
+		}
+	}
+
+	public function histori_peminjamandir()
+	{
+		$data['title'] = "YAYASAN SINAI INDONESIA";
+		$data['subtitle'] = "Peminjaman Mobil";
+		$data['daftarpin'] = $this->model->getjoinHistoriPinjam();
+		$this->blade->render('histori_pinjamdir', $data);
+	}
 }

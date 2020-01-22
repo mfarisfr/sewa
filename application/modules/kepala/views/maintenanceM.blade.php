@@ -10,15 +10,17 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
+                    <th scope="col">No</th>
                         <th scope="col">Plat Mobil</th>
                         <th scope="col">Kondisi</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
-                <?php foreach ($daftarm as $a) :
+                <?php $no=1;foreach ($daftarm as $a) :
                 ?>
                     <?php $id = $a['id_listker']; ?>
                     <tr>
+                    <td><?php echo $no;?></td>
                         <td><?php echo $a['plat']; ?></td>
                         <td><?php echo $a['kondisi']; ?></td>
                         <td>
@@ -27,6 +29,7 @@
                             </a>
                         </td>
                     <?php
+                    $no++;
                 endforeach;
                     ?>
         </div>

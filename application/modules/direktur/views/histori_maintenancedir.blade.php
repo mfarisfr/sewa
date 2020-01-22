@@ -1,4 +1,4 @@
-@layout('template/main/kepala/main')
+@layout('template/main/direktur/main')
 
 @section('content')
 
@@ -9,25 +9,21 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                    <th scope="col">NO</th>
                         <th scope="col">Plat Mobil</th>
                         <th scope="col">Kondisi</th>
                         <th scope="col">Tanggal Perbaikan</th>
                     </tr>
                 </thead>
                 <?php
-                $no=1;
                 foreach ($daftarm as $a) :
                 ?>
                     <tr>
-                    <td><?= $no; ?></td>
                         <td><?= $a['plat']; ?></td>
                         <td><?= $a['kondisi']; ?></td>
                         <td><?= $a['tgl_perbaikan']; ?></td>
 
                     </tr>
                 <?php
-                $no++;
                 endforeach;
                 ?>
 

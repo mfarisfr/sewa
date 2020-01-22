@@ -30,6 +30,33 @@
             </a>
         </li>
 
+        <li class="nav-item">
+            <a href="{{base_url('direktur/CekPeminjaman')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Konfirmasi Peminjaman</p>
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a href="{{base_url('direktur/histori_peminjamandir')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Histori Peminjaman Mobil</p>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="{{base_url('direktur/histori_pajakdir')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Histori Pembayaran Pajak</p>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="{{base_url('direktur/histori_maintenancedir')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Histori Maintenance Mobil</p>
+            </a>
+        </li>
     </ul>
 </li>
 <li class="nav-item">

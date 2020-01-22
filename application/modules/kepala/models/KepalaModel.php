@@ -105,10 +105,53 @@ class KepalaModel extends CI_Model
         $sql = "SELECT * from histori_maintenance";
         return $this->db->query($sql)->result_array();
     }
-    // public function getJoinListKer()
-    // {
-    //     $sql = "SELECT L.*,M.* from list_kerusakan L inner join mobil M on L.plat=M.plat";
-    //     return $this->db->query($sql)->result_array();
-    // }
+
+    public function insertKPinjam($id_pinjam_kar, $plat,$kondisi, $status)
+    {
+        $sql = "insert into pinjam values ('','$id_pinjam_kar', '$plat','','','$kondisi','', '$status')";
+        $this->db->query($sql);
+    }
+
+    public function get_kondisi_by_plat($plat)
+    {
+        $sql = "SELECT kondisi from list_kerusakan where plat='$plat'";
+        return $this->db->query($sql)->row_array();
+    }
+
+    public function getJoinPinjam()
+    {
+        $sql = "SELECT K.*,P.*,N.* from pinjam_kar K inner join pinjam P on K.id_pinjam_kar=P.id_pinjam_kar 
+        inner join karyawan N on K.id_karyawan=N.id_karyawan";
+        return $this->db->query($sql)->result_array();
+    }
+
+    public function get_by_id_pinjam($table, $id_pinjam)
+    {
+        $user = $this->db->get_where($table,array("id_pinjam"=>$id_pinjam));
+        return $user->row_array();
+    }
+
+    public function insertHistoriPeminjaman($id_pinjam)
+    {
+        $sql = "insert into histori_pinjam values ('','$id_pinjam')";
+        $this->db->query($sql);
+    }
+
+    public function updatePinjam($table, $set, $where)
+    {
+        return $this->db
+					->where($where)
+					->update($table, $set);
+    }
+
+    public function getJoinPinjamKar()
+    {
+        $sql = "SELECT K.*,P.* from pinjam_kar K inner join pinjam P on K.id_pinjam_kar=P.id_pinjam_kar";
+        return $this->db->query($sql)->result_array();
+    }
+
+   
+
+
 
 }
