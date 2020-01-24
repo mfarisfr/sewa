@@ -26,7 +26,7 @@
     </thead>
     <tbody>
         <?php foreach ($daftarp as $dp) :
-        if($dp['status']==3 || $dp['status']==4)
+        if($dp['status']=="konfirmasi direktur" || $dp['status']=="dipinjam")
         {
         ?>
             <tr>
@@ -44,15 +44,8 @@
                 <td><?= $dp['kerusakana_awal']; ?></td>
                 <td><?= $dp['kerusakan_akhir']; ?></td>
                 <td> <select name="status" class="form-control">
-                 <?php if($dp['status']==3)
-                 {
-                     $status="Konfirmasi Direktur";
-                 }
-                 else
-                 {
-                     $status="Di Pinjam";
-                 }  ?> 
-            <option value="<?=$dp['status'];?>"><?= $status; ?></option>
+ 
+            <option value="<?=$dp['status'];?>"><?= $dp['status']; ?></option>
         </select>
                 <td>
                     <a href="<?= base_url('kepala/FormUpdatePinjam?u=' . $id); ?>">

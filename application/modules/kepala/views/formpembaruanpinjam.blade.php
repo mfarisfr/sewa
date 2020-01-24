@@ -36,18 +36,9 @@
     <div class="form-group">
         <label for="status"> Status:</label>
         <select name="status" class="form-control">
-        <?php foreach ($pin as $a) :
-              if($a['status']==3){ 
-                $status="Konfirmasi Direktur";
-            }
-            elseif($a['status']==4)
-            {
-                $status="Di Pinjam";
-            }
-        endforeach; ?>
-            <option selected><?= $status?></option> 
-            <option value="4">Dipinjam</option>
-            <option value="5">Kembali</option>
+            <option selected>-------</option> 
+            <option value="dipinjam">Dipinjam</option>
+            <option value="kembali">Kembali</option>
         </select>
     </div>
     <button type="submit" class="btn btn-default" name="perbarui">Update</button>

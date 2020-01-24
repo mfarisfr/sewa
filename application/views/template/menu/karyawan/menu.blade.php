@@ -6,31 +6,30 @@
             <i class="right fas fa-angle-left"></i>
         </p>
     </a>
-    <ul class="nav nav-treeview">
-        <li class="nav-item">
-            <a href="#" class="nav-link
-            ">     
-               <i class="far fa-circle nav-icon"></i>
-               <p>Pemberitahuan</p>
-            </a>
-        </li>
-        
-        
-        <li class="nav-item">
-            <a href="{{base_url('karyawan/peminjaman')}}" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Peminjaman Mobil</p>
-            </a>
-        </li>
-        
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Cetak</p>
-            </a>
-        </li>
-        
-    </ul>
+<li class="nav-item">
+    <a href="{{base_url('karyawan/tolak')}}" class="nav-link
+            ">
+        <i class="far fa-circle nav-icon"></i>
+        <p>Pemberitahuan</p>
+    </a>
+</li>
+
+
+<li class="nav-item">
+    <a href="{{base_url('karyawan/peminjaman')}}" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+        <p>Peminjaman Mobil</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{base_url('karyawan/cekstatuspinjam')}}" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+        <p>Cetak</p>
+    </a>
+</li>
+
+</ul>
 </li>
 <li class="nav-item">
     <a href="{{base_url('start/logout')}}" class="nav-link">

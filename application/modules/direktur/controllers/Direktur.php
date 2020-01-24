@@ -79,7 +79,7 @@ class Direktur extends MY_Controller
 		if (isset($_POST['submit'])) {
 			$id_pinjam = $this->input->post('id_pinjam');
 			$status = $this->input->post('status');
-			if ($status == "3") {
+			if ($status == "konfirmasi direktur") {
 				$pw = array(
 					'status' => $status
 				);
@@ -96,5 +96,34 @@ class Direktur extends MY_Controller
 		$data['subtitle'] = "Peminjaman Mobil";
 		$data['daftarpin'] = $this->model->getjoinHistoriPinjam();
 		$this->blade->render('histori_pinjamdir', $data);
+	}
+
+	public function tabelcetak()
+	{
+		$data['title'] = "YAYASAN SINAI INDONESIA";
+		$data['subtitle'] = "Pengecekan Status Peminjaman Mobil";
+		$id_karyawan = $this->session->userdata('id_karyawan');
+		$data['daftarp'] = $this->model->getJoinPinjamC($id_karyawan);
+		$this->blade->render('tabelcetakdir', $data);
+	}
+
+	public function cetakfile()
+	{
+		$id_pinjam = $_GET['u'];
+		$data['title'] = "YAYASAN SINAI INDONESIA";
+		$data['subtitle'] = "Cetak File";
+		$data['daftarp'] = $this->model->getjoincetak($id_pinjam);
+
+		$this->blade->render('cetakdir', $data);
+	}
+
+	public function tolak()
+	{
+		$data['title'] = "YAYASAN SINAI INDONESIA";
+		$data['subtitle'] = "Pengecekan Status Peminjaman Mobil";
+		$id_pinjam = $this->session->userdata('id_pinjam');
+		$data['daftarp'] = $this->model->getjointolak($id_pinjam);
+
+		$this->blade->render('pemberitahuandir', $data);
 	}
 }

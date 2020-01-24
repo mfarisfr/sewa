@@ -46,7 +46,7 @@ class Kepala extends MY_Controller
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "Konfirmasi Peminjaman Mobil";
 		$data['daftarp'] = $this->model->getpinjam();
-		$data['daftarpk']= $this->model->getJoinPinjamKar();
+		$data['daftarpk'] = $this->model->getJoinPinjamKar();
 		$this->blade->render('konfirmasipinjamkep', $data);
 	}
 
@@ -103,12 +103,15 @@ class Kepala extends MY_Controller
 		$data['subtitle'] = "Tambah Data Mobil";
 		$this->blade->render('formtambahmobil', $data);
 		if (isset($_POST['submit'])) {
-			$plat = $this->input->post('plat');
+			$platn = $this->input->post('plat');
+			$plat = strtoupper($platn);
 			$nama_pemilik = $this->input->post('nama_pemilik');
 			$alamat = $this->input->post('alamat');
 			$tahun = $this->input->post('tahun');
-			$merk_type = $this->input->post('merk_type');
-			$jenis_model = $this->input->post('jenis_model');
+			$merk_typen = $this->input->post('merk_type');
+			$merk_type = strtoupper($merk_typen);
+			$jenis_modeln = $this->input->post('jenis_model');
+			$jenis_model = strtoupper($jenis_modeln);
 			$warna_kb = $this->input->post('warna_kb');
 			$isi_silinder = $this->input->post('isi_silinder');
 			$no_rangka = $this->input->post('no_rangka');
@@ -229,13 +232,26 @@ class Kepala extends MY_Controller
 			$id_pinjam_kar = $this->input->post('id_pinjam_kar');
 			$plat = $this->input->post('plat');
 			$status = $this->input->post('status');
-			if ($status == "2") {
+			if ($status == "konfirmasi kepala") {
 				$k = $this->model->get_kondisi_by_plat($plat);
 				foreach ($k as $a) :
 					$kondisi = $a;
 				endforeach;
 				$this->model->insertKPinjam($id_pinjam_kar, $plat, $kondisi, $status);
-				redirect('kepala');
+				redirect('kepala/konfirmasipinjam');
+			} else if ($status == "ditolak") {
+				// $pw = array(
+				// 	'plat' => $plat,
+				// 	'status' => $status,
+				// 	'km_awal' => $km_awal,
+				// 	'km_akhir' => $km_akhir,
+				// 	'kerusakan_akhir' => $kerusakan_akhir
+				// );
+				// $where = array('id_pinjam' => $id_pinjam);
+				// $this->model->updatePinjam("pinjam", $pw, $where);
+				$data['title'] = "YAYASAN SINAI INDONESIA";
+				$data['subtitle'] = "Penolakan Peminjaman";
+				$this->blade->render('tolakkep', $data);
 			}
 		}
 	}
@@ -266,10 +282,23 @@ class Kepala extends MY_Controller
 			$km_awal = $this->input->post('km_awal');
 			$km_akhir = $this->input->post('km_akhir');
 			$kerusakan_akhir = $this->input->post('kondisi_akhir');
-			if($status==5){
-			$this->model->insertHistoriPeminjaman($id_pinjam);
+			if ($status == "kembali") {
+				$this->model->insertHistoriPeminjaman($id_pinjam);
+			} elseif ($status == "ditolak") {
+				// $pw = array(
+				// 	'plat' => $plat,
+				// 	'status' => $status,
+				// 	'km_awal' => $km_awal,
+				// 	'km_akhir' => $km_akhir,
+				// 	'kerusakan_akhir' => $kerusakan_akhir
+				// );
+				// $where = array('id_pinjam' => $id_pinjam);
+				// $this->model->updatePinjam("pinjam", $pw, $where);
+				$data['title'] = "YAYASAN SINAI INDONESIA";
+				$data['subtitle'] = "Penolakan Peminjaman";
+				$this->blade->render('tolakkep', $data);
 			}
-			
+
 			$pw = array(
 				'plat' => $plat,
 				'status' => $status,
@@ -281,5 +310,34 @@ class Kepala extends MY_Controller
 			$this->model->updatePinjam("pinjam", $pw, $where);
 			redirect('kepala/cekstatuspinjam');
 		}
+	}
+
+	public function tabelcetak()
+	{
+		$data['title'] = "YAYASAN SINAI INDONESIA";
+		$data['subtitle'] = "";
+		$id_karyawan = $this->session->userdata('id_karyawan');
+		$data['daftarp'] = $this->model->getJoinPinjamC($id_karyawan);
+		$this->blade->render('tabelcetakkep', $data);
+	}
+
+	public function cetakfile()
+	{
+		$id_pinjam = $_GET['u'];
+		$data['title'] = "YAYASAN SINAI INDONESIA";
+		$data['subtitle'] = "Cetak File";
+		$data['daftarp'] = $this->model->getjoincetak($id_pinjam);
+
+		$this->blade->render('cetakkep', $data);
+	}
+
+	public function tolak()
+	{
+		$data['title'] = "YAYASAN SINAI INDONESIA";
+		$data['subtitle'] = "Pengecekan Status Peminjaman Mobil";
+		$id_pinjam = $this->session->userdata('id_pinjam');
+		$data['daftarp'] = $this->model->getjointolak($id_pinjam);
+
+		$this->blade->render('pemberitahuankep', $data);
 	}
 }

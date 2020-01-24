@@ -26,8 +26,8 @@
         <label for="status"> Status:</label>
         <select name="status" class="form-control">
             <option selected>Menunggu</option>
-            <option value="0">Ditolak</option>
-            <option value="2">Konfirmasi Kepala</option>
+            <option value="ditolak">Ditolak</option>
+            <option value="konfirmasi kepala">Konfirmasi Kepala</option>
         </select>
     </div>
     <button type="submit" class="btn btn-default" name="submit">Kirim</button>

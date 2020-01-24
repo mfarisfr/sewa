@@ -17,10 +17,10 @@
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
-                <?php $no=1; 
+                <?php $no = 1;
                 foreach ($daftarp as $a) :
                 ?>
-                <?php $id = $a['id_pajak']; ?>
+                    <?php $id = $a['id_pajak']; ?>
                     <tr>
                         <td><?= $no; ?>
                         <td><?php echo $a['plat']; ?></td>
@@ -31,18 +31,18 @@
                                 <button class="btn btn-primary">Perbarui</button>
                             </a>
                         </td>
-                            <?php
-                            $no++;
-                        endforeach;
-                            ?>
+                    <?php
+                    $no++;
+                endforeach;
+                    ?>
         </div>
     </div>
     </table>
-    </center>
-        <center><a href="<?= base_url('kepala/pajakawal'); ?>">
-            <button class="btn btn-primary">Tambah Pajak Awal Mobil</button>
-            <a href="<?= base_url('kepala/histori_pajak'); ?>">
+</center>
+<center><a href="<?= base_url('kepala/pajakawal'); ?>">
+        <button class="btn btn-primary">Tambah Pajak Awal Mobil</button>
+        <a href="<?= base_url('kepala/histori_pajak'); ?>">
             <button class="btn btn-primary">Histori Pembayaran Pajak Mobil</button>
 
 
-@endsection
+            @endsection

@@ -8,7 +8,7 @@
     </a>
     <ul class="nav nav-treeview">
         <li class="nav-item">
-            <a href="#" class="nav-link
+            <a href="{{base_url('direktur/tolak')}}" class="nav-link
             ">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Pemberitahuan</p>
@@ -24,7 +24,7 @@
         </li>
 
         <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{base_url('direktur/tabelcetak')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Cetak</p>
             </a>
@@ -36,7 +36,7 @@
                 <p>Konfirmasi Peminjaman</p>
             </a>
         </li>
-        
+
         <li class="nav-item">
             <a href="{{base_url('direktur/histori_peminjamandir')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>

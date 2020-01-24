@@ -23,7 +23,7 @@
     </thead>
     <tbody>
         <?php foreach ($daftarpin as $dp) :
-        if($dp['status']==5)
+        if($dp['status']=="kembali")
         {
         ?>
             <tr>

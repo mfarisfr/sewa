@@ -26,7 +26,7 @@
     </thead>
     <tbody>
         <?php foreach ($daftarp as $dp) :
-        if($dp['status']==2)
+        if($dp['status']=="konfirmasi kepala")
         {
         ?>
             <tr>
@@ -43,13 +43,7 @@
                 <td><?= $dp['km_akhir']; ?></td>
                 <td><?= $dp['kerusakana_awal']; ?></td>
                 <td><?= $dp['kerusakan_akhir']; ?></td> -->
-                <td> <select name="status" class="form-control">
-                 <?php if($dp['status']==2)
-                 {
-                     $status="Konfirmasi Kepala";
-                 }?> 
-            <option value="<?=$dp['status'];?>"><?= $status; ?></option>
-        </select>
+                <td><?= $dp['status']; ?></td>
                 <td>
                     <a href="<?= base_url('direktur/konfirmasiPeminjaman?u=' . $id); ?>">
                         <button class="btn btn-primary">Tanggapi</button>
