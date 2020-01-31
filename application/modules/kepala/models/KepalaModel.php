@@ -22,6 +22,12 @@ class KepalaModel extends CI_Model
         return $this->db->query($sql)->result_array();
     }
 
+    public function getJoinMobilPajak()
+    {
+        $sql = "SELECT M.*,P.* from mobil M inner join pajak P on M.plat=P.plat";
+        return $this->db->query($sql)->result_array();
+    }
+
     public function insertpajak($plat, $tgl_pajak, $harga)
     {
         $sql = "insert into pajak values ('','$plat','$tgl_pajak','$harga')";
@@ -187,4 +193,11 @@ class KepalaModel extends CI_Model
         inner join karyawan N on K.id_karyawan=N.id_karyawan inner join tolak T on T.id_pinjam=P.id_pinjam";
         return $this->db->query($sql)->result_array();
     }
+
+    public function get_by_id_pinjam_kar($table, $id_pinjam_kar)
+    {
+        $user = $this->db->get_where($table, array("id_pinjam_kar" => $id_pinjam_kar));
+        return $user->row_array();
+    }
+
 }

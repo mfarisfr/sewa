@@ -55,7 +55,10 @@ class Kepala extends MY_Controller
 		$data['id_pinjam_kar'] = $_GET['u'];
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "Form Tanggapan";
+		// $id_pinjam_kar = $_GET['u'];
+		// $data['daftarpin']=$this->model->get_by_id_pinjam_kar("pinjam_kar", $id_pinjam_kar);
 		$data['daftarm'] = $this->model->getMobil();
+		$data['daftarp'] = $this->model->getJoinMobilPajak();
 		$this->blade->render('formkonfirmasipinjam', $data);
 	}
 
@@ -64,6 +67,7 @@ class Kepala extends MY_Controller
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "Pajak Awal Mobil";
 		$data['daftarm'] = $this->model->getMobil();
+		$data['daftarp'] = $this->model->getJoinMobilPajak();
 		$this->blade->render('formpajakawal', $data);
 		if (isset($_POST['submit'])) {
 			$plat = $this->input->post('plat');

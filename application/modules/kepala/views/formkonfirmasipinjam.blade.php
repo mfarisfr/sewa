@@ -14,11 +14,25 @@
     <div class="form-group">
         <label for="plat"> Plat Mobil:</label>
         <select name="plat" class="form-control">
+            <!-- 
+        <?php
+        // $today=date ("Y-m-d"); -->
+        // $tgl_agenda = strtotime($ag['tgl_agenda']);
+        // $tgl_today = strtotime($today);
+        // if ($tgl_today < $tgl_agenda){
+        // fungsitampileven();
+        // } 
+        ?> -->
             <option selected>Pilih</option>
-            <?php foreach ($daftarm as $a) :
+            <?php
+            foreach ($daftarp as $p) :
+                foreach ($daftarm as $a) :
+                    if ($p['plat'] == $a['plat']) {
             ?>
-                <option value="<?= $a['plat']; ?>"><?= $a['plat']; ?>- <?= $a['merk_type']; ?></option>
-            <?php endforeach ?>
+                        <option value="<?= $a['plat']; ?>"><?= $a['plat']; ?>- <?= $a['merk_type']; ?></option>
+            <?php }
+                endforeach;
+            endforeach; ?>
         </select>
     </div>
 

@@ -5,14 +5,21 @@
     <h1>Pajak Awal Mobil</h1>
 </center>
 <h2>Silahkan input data pajak awal :</h2>
-<form  method="POST" action="{{base_url('kepala/pajakawal')}}">
+<form method="POST" action="{{base_url('kepala/pajakawal')}}">
     <div class="form-group">
         <label for="plat">Plat Mobil</label>
         <select name="plat" class="form-control">
-        <?php foreach ($daftarm as $a) :
-                ?>
-            <option value="<?= $a['plat']; ?>"><?= $a['plat'];?>- <?= $a['merk_type'];?></option>
-            <?php endforeach ?>
+            <?php
+            foreach ($daftarm as $a) :
+                foreach ($daftarp as $p) :
+
+                    if ($a['plat'] == $p['plat']) {
+                    } else {
+            ?>
+                        <option value="<?= $a['plat']; ?>"><?= $a['plat']; ?>- <?= $a['merk_type']; ?></option>
+            <?php }
+                endforeach;
+            endforeach; ?>
         </select>
     </div>
 

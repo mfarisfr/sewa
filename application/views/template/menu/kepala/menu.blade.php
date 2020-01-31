@@ -1,8 +1,8 @@
 <li class="nav-item has-treeview menu-open">
-    <a href="{{base_url('kepala')}}" class="nav-link active">
+    <a href="#" class="nav-link active">
         <i class="nav-icon fas fa-tachometer-alt"></i>
         <p>
-            Kepala
+            Penyewaan
             <i class="right fas fa-angle-left"></i>
         </p>
     </a>
@@ -29,42 +29,47 @@
                 <p>Cetak</p>
             </a>
         </li>
-
-        <li class="nav-item">
-            <a href="{{base_url('kepala/konfirmasipinjam')}}" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Konfirmasi Peminjaman</p>
-            </a>
-        </li>
-
-        <li class="nav-item">
-            <a href="{{base_url('kepala/cekstatuspinjam')}}" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Cek Peminjaman</p>
-            </a>
-        </li>
-
-        <li class="nav-item">
-            <a href="{{base_url('kepala/pajak')}}" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Pajak Mobil</p>
-            </a>
-        </li>
-
-        <li class="nav-item">
-            <a href="{{base_url('kepala/maintenance')}}" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Maintenance Mobil</p>
-            </a>
-        </li>
-
-        <li class="nav-item">
-            <a href="{{base_url('kepala/tampilmobil')}}" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Data Mobil</p>
-            </a>
-        </li>
-
+    </ul>
+</li>
+<li class="nav-item has-treeview menu-open">
+    <a href="#" class="nav-link active">
+        <i class="nav-icon fas fa-tachometer-alt"></i>
+        <p>
+            Kepala
+            <i class="right fas fa-angle-left"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+<li class="nav-item">
+    <a href="{{base_url('kepala/konfirmasipinjam')}}" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+        <p>Konfirmasi Peminjaman</p>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="{{base_url('kepala/cekstatuspinjam')}}" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+        <p>Cek Peminjaman</p>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="{{base_url('kepala/pajak')}}" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+        <p>Pajak Mobil</p>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="{{base_url('kepala/maintenance')}}" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+        <p>Maintenance Mobil</p>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="{{base_url('kepala/tampilmobil')}}" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+        <p>Data Mobil</p>
+    </a>
+</li>
     </ul>
 </li>
 <li class="nav-item">
@@ -76,6 +81,8 @@
         </p>
     </a>
 </li>
+
+
 <!-- <li class="nav-item has-treeview">
     <a href="#" class="nav-link">
         <i class="nav-icon fas fa-copy"></i>

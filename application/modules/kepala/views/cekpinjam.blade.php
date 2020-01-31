@@ -43,10 +43,7 @@
                 <td><?= $dp['km_akhir']; ?></td>
                 <td><?= $dp['kerusakana_awal']; ?></td>
                 <td><?= $dp['kerusakan_akhir']; ?></td>
-                <td> <select name="status" class="form-control">
- 
-            <option value="<?=$dp['status'];?>"><?= $dp['status']; ?></option>
-        </select>
+                <td><?= $dp['status']; ?></option>
                 <td>
                     <a href="<?= base_url('kepala/FormUpdatePinjam?u=' . $id); ?>">
                         <button class="btn btn-primary">Update</button>

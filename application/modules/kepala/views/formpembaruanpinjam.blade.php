@@ -26,10 +26,6 @@
         <input type="number" class="form-control" name="km_akhir">
     </div>
     <div class="form-group">
-        <label for="kondisi_awal"> Kondisi Awal:</label>
-        <input type="text" class="form-control" name="Kondisi_awal" placeholder="<?= $pin['kerusakana_awal'];?>">
-    </div>
-    <div class="form-group">
         <label for="kondisi_akhir"> Kondisi Akhir:</label>
         <input type="text" class="form-control" name="kondisi_akhir">
     </div>
