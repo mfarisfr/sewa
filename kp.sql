@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 31 Jan 2020 pada 15.20
+-- Waktu pembuatan: 06 Feb 2020 pada 15.26
 -- Versi server: 10.1.36-MariaDB
 -- Versi PHP: 7.2.10
 
@@ -283,7 +283,7 @@ INSERT INTO `pinjam_kar` (`id_pinjam_kar`, `id_karyawan`, `tgl_pinjam`, `waktu_p
 
 CREATE TABLE `tolak` (
   `id_tolak` int(11) NOT NULL,
-  `id_pinjam` int(11) NOT NULL,
+  `id_pinjam_kar` int(11) NOT NULL,
   `keterangan` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -375,7 +375,7 @@ ALTER TABLE `pinjam_kar`
 --
 ALTER TABLE `tolak`
   ADD PRIMARY KEY (`id_tolak`),
-  ADD KEY `fkkkkkkid_pinjam` (`id_pinjam`);
+  ADD KEY `fkkp_id_pinjam_kar` (`id_pinjam_kar`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
@@ -495,7 +495,7 @@ ALTER TABLE `pinjam_kar`
 -- Ketidakleluasaan untuk tabel `tolak`
 --
 ALTER TABLE `tolak`
-  ADD CONSTRAINT `fkkkkkkid_pinjam` FOREIGN KEY (`id_pinjam`) REFERENCES `pinjam` (`id_pinjam`);
+  ADD CONSTRAINT `fkkp_id_pinjam_kar` FOREIGN KEY (`id_pinjam_kar`) REFERENCES `pinjam_kar` (`id_pinjam_kar`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
