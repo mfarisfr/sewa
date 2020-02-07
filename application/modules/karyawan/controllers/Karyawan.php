@@ -7,7 +7,7 @@ class Karyawan extends MY_Controller
 	function __construct()
 	{
 		parent::__construct();
-
+        $this->load->library('pdf');
 		if (!$this->session->userdata('id_karyawan')) {
 			redirect('start?pesan=Silahkan Login dahulu');
 		}
@@ -53,20 +53,23 @@ class Karyawan extends MY_Controller
 
 	public function cetakfile()
 	{
+        
+        
 		$id_pinjam = $_GET['u'];
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "Cetak File";
 		$data['daftarp'] = $this->model->getjoincetak($id_pinjam);
-
-		$this->blade->render('cetak', $data);
+              
+        
+        $this->blade->render('cetak', $data);
 	}
 
 	public function tolak()
 	{
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "Pengecekan Status Peminjaman Mobil";
-		$id_pinjam = $this->session->userdata('id_pinjam');
-		$data['daftarp'] = $this->model->getjointolak($id_pinjam);
+		$id_karyawan = $this->session->userdata('id_karyawan');
+		$data['daftarp'] = $this->model->getjointolak($id_karyawan);
 
 		$this->blade->render('pemberitahuan', $data);
 	}

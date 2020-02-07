@@ -7,7 +7,7 @@ class Kepala extends MY_Controller
 	function __construct()
 	{
 		parent::__construct();
-
+        $this->load->library('pdf');
 		if (!$this->session->userdata('id_karyawan')) {
 			redirect('start?pesan=Silahkan Login dahulu');
 		}
@@ -234,6 +234,7 @@ class Kepala extends MY_Controller
 	{
 		if (isset($_POST['submit'])) {
 			$id_pinjam_kar = $this->input->post('id_pinjam_kar');
+            $data['kar'] = $this->input->post('id_pinjam_kar');
 			$plat = $this->input->post('plat');
 			$status = $this->input->post('status');
 			if ($status == "konfirmasi kepala") {
@@ -335,13 +336,32 @@ class Kepala extends MY_Controller
 		$this->blade->render('cetakkep', $data);
 	}
 
-	public function tolak()
+	public function inserttolak()
+	{
+        if (isset($_POST['submit'])) {
+        $id_pinjam_kar = $this->input->post('id_pinjam_kar');
+        $keterangan = $this->input->post('keterangan');
+        $this->model->inserttolak($id_pinjam_kar, $keterangan);
+        redirect('kepala');
+        }
+	}
+    
+    public function tolak()
+	{
+        $id_karyawan = $this->session->userdata('id_karyawan');
+		$data['daftarp'] = $this->model->getjointolak($id_karyawan);
+		$data['title'] = "YAYASAN SINAI INDONESIA";
+		$data['subtitle'] = "";
+		$this->blade->render('pemberitahuankep', $data);
+	}
+	    
+    public function notifpajak()
 	{
 		$data['title'] = "YAYASAN SINAI INDONESIA";
-		$data['subtitle'] = "Pengecekan Status Peminjaman Mobil";
-		$id_pinjam = $this->session->userdata('id_pinjam');
-		$data['daftarp'] = $this->model->getjointolak($id_pinjam);
+		$data['subtitle'] = "notifpajak";
+		$plat = $this->session->userdata('plat');
+		$data['daftarp'] = $this->model->notifpajak($plat);
 
-		$this->blade->render('pemberitahuankep', $data);
+		$this->blade->render('notif', $data);
 	}
 }

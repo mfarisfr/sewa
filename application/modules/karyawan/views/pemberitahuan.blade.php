@@ -20,7 +20,6 @@
     </thead>
     <tbody>
         <?php foreach ($daftarp as $dp) :
-            if ($dp['status'] == "ditolak") {
         ?>
                 <tr>
                     <td><?= $id = $dp['id_pinjam_kar']; ?></td>
@@ -34,7 +33,6 @@
                     <td><?= $dp['keterangan']; ?></td>
                 </tr>
         <?php
-            }
         endforeach;
         ?>
     </tbody>

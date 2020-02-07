@@ -30,10 +30,10 @@ class KaryawanModel extends CI_Model
         return $this->db->query($sql)->result_array();
     }
 
-    public function getjointolak($id_pinjam)
+   
+    public function getjointolak($id_karyawan)
     {
-        $sql = "SELECT K.*,P.*,N.*,T.* from pinjam_kar K inner join pinjam P on K.id_pinjam_kar=P.id_pinjam_kar 
-        inner join karyawan N on K.id_karyawan=N.id_karyawan inner join tolak T on T.id_pinjam=P.id_pinjam";
+        $sql = "SELECT K.*,N.*,T.* from pinjam_kar K inner join karyawan N on K.id_karyawan=N.id_karyawan inner join tolak T on T.id_pinjam_kar=K.id_pinjam_kar where K.id_karyawan = '$id_karyawan'";
         return $this->db->query($sql)->result_array();
     }
 }
