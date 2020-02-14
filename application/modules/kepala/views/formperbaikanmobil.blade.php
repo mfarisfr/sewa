@@ -18,9 +18,15 @@
             <option value="<?= $per['plat']; ?>"><?= $per['plat']; ?></option>
         </select>
     </div>
+
     <div class="form-group">
-        <label for="kondisi">Kondisi Yang Diperbaiki</label>
-        <input type="text" name="kondisi" class="form-control" value="<?php echo $per['kondisi']; ?> ">
+        <label for="kondisi">Kondisi Saat Ini</label>
+        <textarea name="kondisi" cols="40" rows="5" class="form-control" ><?= $per['kondisi']; ?></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="kondisiper">Kondisi Yang Diperbaiki</label>
+        <textarea name="kondisiper" cols="40" rows="5" class="form-control" ></textarea>
     </div>
 
     <div class="form-group">

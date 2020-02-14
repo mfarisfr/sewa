@@ -8,16 +8,16 @@
     <div class="form-group">
         <label for="plat">Plat Mobil</label>
         <select name="plat" class="form-control">
-        <?php foreach ($daftarm as $a) :
-                ?>
-            <option value="<?= $a['plat']; ?>"><?= $a['plat'];?>- <?= $a['merk_type'];?></option>
+            <?php foreach ($daftarm as $a) :
+            ?>
+                <option value="<?= $a['plat']; ?>"><?= $a['plat']; ?>- <?= $a['merk_type']; ?></option>
             <?php endforeach ?>
         </select>
     </div>
 
     <div class="form-group">
         <label for="kondisi">Kondisi</label>
-        <input type="text" name="kondisi" class="form-control">
+        <textarea name="kondisi" cols="40" rows="5" class="form-control"></textarea>
     </div>
 
     <div class="form-group">

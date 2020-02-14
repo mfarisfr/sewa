@@ -7,7 +7,7 @@ class Direktur extends MY_Controller
 	function __construct()
 	{
 		parent::__construct();
-        $this->load->library('pdf');
+		$this->load->library('pdf');
 		if (!$this->session->userdata('id_karyawan')) {
 			redirect('start?pesan=Silahkan Login dahulu');
 		}
@@ -77,7 +77,7 @@ class Direktur extends MY_Controller
 	public function konfirmpinjamdir()
 	{
 		if (isset($_POST['submit'])) {
-            $data['pinjam'] = $this->input->post('id_pinjam');
+			$data['pinjam'] = $this->input->post('id_pinjam');
 			$id_pinjam = $this->input->post('id_pinjam');
 			$status = $this->input->post('status');
 			if ($status == "konfirmasi direktur") {
@@ -87,13 +87,12 @@ class Direktur extends MY_Controller
 				$where = array('id_pinjam' => $id_pinjam);
 				$this->model->updatePinjam("pinjam", $pw, $where);
 				redirect('direktur/CekPeminjaman');
-			}
-            else if ($status == "ditolak"){
-                
-                $data['title'] = "YAYASAN SINAI INDONESIA";
+			} else if ($status == "ditolak") {
+
+				$data['title'] = "YAYASAN SINAI INDONESIA";
 				$data['subtitle'] = "Penolakan Peminjaman";
 				$this->blade->render('tolakdir', $data);
-            }
+			}
 		}
 	}
 
@@ -124,24 +123,24 @@ class Direktur extends MY_Controller
 		$this->blade->render('cetakdir', $data);
 	}
 
-	
-    public function inserttolak()
+
+	public function inserttolak()
 	{
-        if (isset($_POST['submit'])) {
-        $id_pinjam = $this->input->post('id_pinjam');
-        $pinjam = $this->model->get_by_id_pinjam($id_pinjam);
-            foreach($pinjam as $p):
-                $id_pinjam_kar = $p['id_pinjam_kar'];
-            endforeach;
-        $keterangan = $this->input->post('keterangan');
-        $this->model->inserttolak($id_pinjam_kar, $keterangan);
-        redirect('kepala');
-        }
+		if (isset($_POST['submit'])) {
+			$id_pinjam = $this->input->post('id_pinjam');
+			$p = $this->model->get_by_id_pinjam($id_pinjam);
+			foreach ($p as $pk) :
+				$id_pinjam_kar = $pk;
+			endforeach;
+			$keterangan = $this->input->post('keterangan');
+			$this->model->inserttolak($id_pinjam_kar, $keterangan);
+			redirect('direktur');
+		}
 	}
-    
-    public function tolak()
+
+	public function tolak()
 	{
-        $id_karyawan = $this->session->userdata('id_karyawan');
+		$id_karyawan = $this->session->userdata('id_karyawan');
 		$data['daftarp'] = $this->model->getjointolak($id_karyawan);
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "";

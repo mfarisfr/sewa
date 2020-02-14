@@ -20,21 +20,20 @@
     </thead>
     <tbody>
         <?php foreach ($daftarp as $dp) :
-            if ($dp['status'] == "ditolak") {
+
         ?>
-                <tr>
-                    <td><?= $id = $dp['id_pinjam_kar']; ?></td>
-                    <td><?= $dp['nama']; ?></td>
-                    <td><?= $dp['tgl_pinjam']; ?></td>
-                    <td><?= $dp['waktu_pinjam']; ?></td>
-                    <td><?= $dp['tgl_kembali']; ?></td>
-                    <td><?= $dp['waktu_kembali']; ?></td>
-                    <td><?= $dp['tempat']; ?></td>
-                    <td><?= $dp['acara']; ?></td>
-                    <td><?= $dp['keterangan']; ?></td>
-                </tr>
+            <tr>
+                <td><?= $id = $dp['id_pinjam_kar']; ?></td>
+                <td><?= $dp['nama']; ?></td>
+                <td><?= $dp['tgl_pinjam']; ?></td>
+                <td><?= $dp['waktu_pinjam']; ?></td>
+                <td><?= $dp['tgl_kembali']; ?></td>
+                <td><?= $dp['waktu_kembali']; ?></td>
+                <td><?= $dp['tempat']; ?></td>
+                <td><?= $dp['acara']; ?></td>
+                <td><?= $dp['keterangan']; ?></td>
+            </tr>
         <?php
-            }
         endforeach;
         ?>
     </tbody>

@@ -210,11 +210,12 @@ class Kepala extends MY_Controller
 			$id_listker = $this->input->post('id_listker');
 			$plat = $this->input->post('plat');
 			$kondisi = $this->input->post('kondisi');
+			$kondisiper = $this->input->post('kondisiper');
 			$tgl_perbaikan = $this->input->post('tgl_perbaikan');
-			$this->model->insertHistoriMaintenance($id_listker, $plat, $kondisi, $tgl_perbaikan);
+			$this->model->insertHistoriMaintenance($id_listker, $plat, $kondisiper, $tgl_perbaikan);
 			$pw = array(
 				'plat' => $plat,
-				'kondisi' => '',
+				'kondisi' => $kondisi
 			);
 			$where = array('id_listker' => $id_listker);
 			$this->model->updateKerusakan("list_kerusakan", $pw, $where);

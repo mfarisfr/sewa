@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 06 Feb 2020 pada 15.26
+-- Waktu pembuatan: 14 Feb 2020 pada 07.57
 -- Versi server: 10.1.36-MariaDB
 -- Versi PHP: 7.2.10
 
@@ -59,7 +59,8 @@ INSERT INTO `histori_maintenance` (`id_his_maintenance`, `id_listker`, `plat`, `
 (4, 4, 'AB1729BX', 'Kaca Belakang Pecah', '2020-01-20'),
 (5, 4, 'AB1729BX', 'Penyokk Belakang', '2020-01-22'),
 (6, 5, 'G1248kb', 'Kaca Belakang Pecah', '2020-01-23'),
-(7, 5, 'G1248kb', 'kaca depan pecah', '0000-00-00');
+(7, 5, 'G1248kb', 'kaca depan pecah', '0000-00-00'),
+(8, 7, 'kt1759nb', '', '2020-02-14');
 
 -- --------------------------------------------------------
 
@@ -154,7 +155,10 @@ CREATE TABLE `list_kerusakan` (
 INSERT INTO `list_kerusakan` (`id_listker`, `plat`, `kondisi`) VALUES
 (3, 'kt1759nb', ''),
 (4, 'AB1729BX', ''),
-(5, 'G1248kb', '');
+(5, 'G1248kb', ''),
+(6, 'kt1759nb', 'kacanya pecah, ban pecah,'),
+(7, 'kt1759nb', ''),
+(8, 'kt1759nb', '1. ban pecah\r\n2. kaca pecah');
 
 -- --------------------------------------------------------
 
@@ -240,7 +244,8 @@ INSERT INTO `pinjam` (`id_pinjam`, `id_pinjam_kar`, `plat`, `km_awal`, `km_akhir
 (14, 8, 'G1248kb', 0, 0, '', '', '0'),
 (15, 10, 'AB1729BX', 0, 0, '', '', 'konfirmasi direktur'),
 (16, 9, 'kt1759nb', 0, 0, '', '', 'konfirmasi direktur'),
-(17, 11, 'kt1759nb', 0, 0, '', '', 'konfirmasi kepala');
+(17, 11, 'kt1759nb', 0, 0, '', '', 'konfirmasi kepala'),
+(18, 12, 'kt1759nb', 0, 0, '', '', 'konfirmasi kepala');
 
 -- --------------------------------------------------------
 
@@ -273,7 +278,10 @@ INSERT INTO `pinjam_kar` (`id_pinjam_kar`, `id_karyawan`, `tgl_pinjam`, `waktu_p
 (8, '1', '2020-01-25', '14:02:00', '2020-01-26', '14:02:00', 'Sekolah Teladan', 'Pribadi'),
 (9, '1', '2020-01-25', '14:02:00', '2020-01-26', '14:02:00', 'Bandara', 'Disewa Teman'),
 (10, '1', '2020-01-27', '15:03:00', '2020-01-28', '15:03:00', 'Sekolah', 'Arisan'),
-(11, '2', '2020-01-27', '13:01:00', '2020-01-28', '13:01:00', 'kampus', 'Wisuda');
+(11, '2', '2020-01-27', '13:01:00', '2020-01-28', '13:01:00', 'kampus', 'Wisuda'),
+(12, '1', '2020-02-09', '14:02:00', '2020-02-10', '14:02:00', 'sekolah', 'piknik'),
+(13, '1', '2020-02-11', '14:02:00', '2020-02-11', '14:02:00', 'rumah', 'keluarga'),
+(14, '3', '2020-02-08', '12:00:00', '2020-02-09', '12:00:00', 'Sekolah', 'tamasya');
 
 -- --------------------------------------------------------
 
@@ -286,6 +294,15 @@ CREATE TABLE `tolak` (
   `id_pinjam_kar` int(11) NOT NULL,
   `keterangan` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tolak`
+--
+
+INSERT INTO `tolak` (`id_tolak`, `id_pinjam_kar`, `keterangan`) VALUES
+(1, 13, 'ganti hari sabtu'),
+(2, 14, 'saya tidak suka dengan bapak'),
+(8, 11, 'saya juga tidak suka dengan bapak');
 
 --
 -- Indexes for dumped tables
@@ -391,7 +408,7 @@ ALTER TABLE `histerori_kerusakan`
 -- AUTO_INCREMENT untuk tabel `histori_maintenance`
 --
 ALTER TABLE `histori_maintenance`
-  MODIFY `id_his_maintenance` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_his_maintenance` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `histori_pajak`
@@ -409,7 +426,7 @@ ALTER TABLE `histori_pinjam`
 -- AUTO_INCREMENT untuk tabel `list_kerusakan`
 --
 ALTER TABLE `list_kerusakan`
-  MODIFY `id_listker` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_listker` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `pajak`
@@ -421,19 +438,19 @@ ALTER TABLE `pajak`
 -- AUTO_INCREMENT untuk tabel `pinjam`
 --
 ALTER TABLE `pinjam`
-  MODIFY `id_pinjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_pinjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT untuk tabel `pinjam_kar`
 --
 ALTER TABLE `pinjam_kar`
-  MODIFY `id_pinjam_kar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_pinjam_kar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `tolak`
 --
 ALTER TABLE `tolak`
-  MODIFY `id_tolak` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tolak` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
