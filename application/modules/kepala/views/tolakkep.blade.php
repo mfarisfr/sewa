@@ -4,6 +4,9 @@
 <center>
     <h1>FRM TOLAK</h1>
 </center>
+<div class="card shadow mb-4">
+      <div class="card-header py-3">
+      <div class="card-body">
  <form method="POST" action="{{base_url('kepala/inserttolak')}}">
      <div class="form-group">
         <label for="status"> id</label>
@@ -18,4 +21,7 @@
 
     <button name="submit" type="submit" class="btn btn-primary">Kirim</button>
 </form>
+      </div>
+      </div>
+</div>
 @endsection

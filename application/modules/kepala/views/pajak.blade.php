@@ -6,6 +6,9 @@
 
     <h1>Data Pajak</h1>
     <div class="container">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+      <div class="card-body">
         <div class="row">
             <table class="table table-striped">
                 <thead>
@@ -36,6 +39,9 @@
                 endforeach;
                     ?>
         </div>
+    </div>
+      </div>
+      </div>
     </div>
     </table>
 </center>

@@ -4,6 +4,9 @@
 <center>
     <h1>Form Perbaikan Mobil</h1>
 </center>
+<div class="card shadow mb-4">
+      <div class="card-header py-3">
+      <div class="card-body">
 <form method="POST" action="{{base_url('kepala/perbaikanmobil')}}">
 
     <div class="form-group">
@@ -36,5 +39,8 @@
 
     <button type="submit" name="perbarui" class="btn btn-primary">Perbarui</button>
 </form>
+      </div>
+      </div>
+</div>
 
 @endsection

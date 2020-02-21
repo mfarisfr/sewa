@@ -5,6 +5,10 @@
 <center>
     <h1>Daftar Mobil</h1>
     <div class="container">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+      <div class="card-body">
+        <div class="table-responsive">
         <div class="row">
             <table class="table table-striped">
                 <thead>
@@ -51,6 +55,10 @@
 
             </table>
         </div>
+    </div>
+    </div>
+    </div>
+    </div>
     </div>
     <a href="{{base_url('kepala/tambahdaftarmobil')}}" class="nav-link">Tambah Data</a>
 

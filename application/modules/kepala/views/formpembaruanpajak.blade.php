@@ -5,6 +5,9 @@
     <h1>Pembaruan Pajak Mobil</h1>
 </center>
 <h3>Silahkan input data pembaruan pajak :</h3>
+<div class="card shadow mb-4">
+      <div class="card-header py-3">
+      <div class="card-body">
 <form method="POST" action="{{base_url('kepala/editpajak')}}">
     <div class="form-group">
         <label for="id_pajak">No Pajak</label>
@@ -36,5 +39,8 @@
 
     <button type="submit" name="perbarui" class="btn btn-primary">Perbarui</button>
 </form>
+      </div>
+      </div>
+</div>
 
 @endsection

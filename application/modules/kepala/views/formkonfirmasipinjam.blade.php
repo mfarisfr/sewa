@@ -4,6 +4,9 @@
 <center>
     <h1>Konfirmasi Peminjaman</h1>
 </center>
+<div class="card shadow mb-4">
+      <div class="card-header py-3">
+      <div class="card-body">
 <form method="POST" action="{{base_url('kepala/konfirmpinjam')}}">
     <div class="form-group">
         <label for="id_pinjam_kar"> Id :</label>
@@ -46,4 +49,8 @@
     </div>
     <button type="submit" class="btn btn-default" name="submit">Kirim</button>
 </form>
+      </div>
+      </div>
+</div>
+
 @endsection

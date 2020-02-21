@@ -5,6 +5,9 @@
     <h1>Pajak Awal Mobil</h1>
 </center>
 <h2>Silahkan input data pajak awal :</h2>
+<div class="card shadow mb-4">
+      <div class="card-header py-3">
+      <div class="card-body">
 <form method="POST" action="{{base_url('kepala/pajakawal')}}">
     <div class="form-group">
         <label for="plat">Plat Mobil</label>
@@ -35,5 +38,7 @@
 
     <button type="submit" name="submit" class="btn btn-primary">Submit</button>
 </form>
-
+      </div>
+      </div>
+</div>
 @endsection

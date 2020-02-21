@@ -4,6 +4,9 @@
 <center>
     <h1>FORM CETAK </h1>
 </center>
+<div class="card shadow mb-4">
+      <div class="card-header py-3">
+      <div class="card-body">
 <table class="table">
     <thead class="thead-light">
         <tr>
@@ -48,4 +51,7 @@
         ?>
     </tbody>
 </table>
+      </div>
+      </div>
+</div>
 @endsection

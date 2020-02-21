@@ -4,6 +4,11 @@
 <center>
     <h1>Cek Status Peminjaman</h1>
 </center>
+<div class="card shadow mb-4">
+      <div class="card-header py-3">
+      <div class="card-body">
+        <div class="table-responsive">
+
 <table class="table">
     <thead class="thead-light">
         <tr>
@@ -56,4 +61,8 @@
         ?>
     </tbody>
 </table>
+        </div>
+      </div>
+      </div>
+</div>
 @endsection
