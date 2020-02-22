@@ -7,7 +7,7 @@ class Kepala extends MY_Controller
 	function __construct()
 	{
 		parent::__construct();
-        $this->load->library('pdf');
+		$this->load->library('pdf');
 		if (!$this->session->userdata('id_karyawan')) {
 			redirect('start?pesan=Silahkan Login dahulu');
 		}
@@ -55,8 +55,6 @@ class Kepala extends MY_Controller
 		$data['id_pinjam_kar'] = $_GET['u'];
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "Form Tanggapan";
-		// $id_pinjam_kar = $_GET['u'];
-		// $data['daftarpin']=$this->model->get_by_id_pinjam_kar("pinjam_kar", $id_pinjam_kar);
 		$data['daftarm'] = $this->model->getMobil();
 		$data['daftarp'] = $this->model->getJoinMobilPajak();
 		$this->blade->render('formkonfirmasipinjam', $data);
@@ -67,12 +65,17 @@ class Kepala extends MY_Controller
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "Pajak Awal Mobil";
 		$data['daftarm'] = $this->model->getMobil();
-		$data['daftarp'] = $this->model->getJoinMobilPajak();
+		$datap = $this->model->getJoinMobilPajak();
 		$this->blade->render('formpajakawal', $data);
 		if (isset($_POST['submit'])) {
 			$plat = $this->input->post('plat');
 			$tgl_pajak = $this->input->post('tgl_pajak');
 			$harga = $this->input->post('harga');
+			foreach ($datap as $pa) :
+				if ($pa['plat'] == $plat) {
+					redirect('kepala/pajak');
+				}
+			endforeach;
 			$this->model->insertpajak($plat, $tgl_pajak, $harga);
 			redirect('kepala/pajak');
 		}
@@ -83,11 +86,16 @@ class Kepala extends MY_Controller
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "Kerusakan Awal Mobil";
 		$data['daftarm'] = $this->model->getMobil();
+		$datar = $this->model->getListker();
 		$this->blade->render('tambah_ker_awal', $data);
 		if (isset($_POST['submit'])) {
 			$plat = $this->input->post('plat');
 			$kondisi = $this->input->post('kondisi');
-			// $harga = $this->input->post('harga');
+			foreach ($datar as $r) :
+				if ($r['plat'] == $plat) {
+					redirect('kepala/maintenance');
+				}
+			endforeach;
 			$this->model->insertlistker($plat, $kondisi);
 			redirect('kepala/maintenance');
 		}
@@ -235,7 +243,7 @@ class Kepala extends MY_Controller
 	{
 		if (isset($_POST['submit'])) {
 			$id_pinjam_kar = $this->input->post('id_pinjam_kar');
-            $data['kar'] = $this->input->post('id_pinjam_kar');
+			$data['kar'] = $this->input->post('id_pinjam_kar');
 			$plat = $this->input->post('plat');
 			$status = $this->input->post('status');
 			if ($status == "konfirmasi kepala") {
@@ -339,24 +347,24 @@ class Kepala extends MY_Controller
 
 	public function inserttolak()
 	{
-        if (isset($_POST['submit'])) {
-        $id_pinjam_kar = $this->input->post('id_pinjam_kar');
-        $keterangan = $this->input->post('keterangan');
-        $this->model->inserttolak($id_pinjam_kar, $keterangan);
-        redirect('kepala');
-        }
+		if (isset($_POST['submit'])) {
+			$id_pinjam_kar = $this->input->post('id_pinjam_kar');
+			$keterangan = $this->input->post('keterangan');
+			$this->model->inserttolak($id_pinjam_kar, $keterangan);
+			redirect('kepala');
+		}
 	}
-    
-    public function tolak()
+
+	public function tolak()
 	{
-        $id_karyawan = $this->session->userdata('id_karyawan');
+		$id_karyawan = $this->session->userdata('id_karyawan');
 		$data['daftarp'] = $this->model->getjointolak($id_karyawan);
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "";
 		$this->blade->render('pemberitahuankep', $data);
 	}
-	    
-    public function notifpajak()
+
+	public function notifpajak()
 	{
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "notifpajak";

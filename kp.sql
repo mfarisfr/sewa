@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Feb 2020 pada 07.57
+-- Waktu pembuatan: 22 Feb 2020 pada 08.21
 -- Versi server: 10.1.36-MariaDB
 -- Versi PHP: 7.2.10
 
@@ -60,7 +60,8 @@ INSERT INTO `histori_maintenance` (`id_his_maintenance`, `id_listker`, `plat`, `
 (5, 4, 'AB1729BX', 'Penyokk Belakang', '2020-01-22'),
 (6, 5, 'G1248kb', 'Kaca Belakang Pecah', '2020-01-23'),
 (7, 5, 'G1248kb', 'kaca depan pecah', '0000-00-00'),
-(8, 7, 'kt1759nb', '', '2020-02-14');
+(8, 7, 'kt1759nb', '', '2020-02-14'),
+(9, 8, 'kt1759nb', '1. kaca pecah', '2020-02-14');
 
 -- --------------------------------------------------------
 
@@ -158,7 +159,10 @@ INSERT INTO `list_kerusakan` (`id_listker`, `plat`, `kondisi`) VALUES
 (5, 'G1248kb', ''),
 (6, 'kt1759nb', 'kacanya pecah, ban pecah,'),
 (7, 'kt1759nb', ''),
-(8, 'kt1759nb', '1. ban pecah\r\n2. kaca pecah');
+(8, 'kt1759nb', '1. ban pecah\r\n'),
+(9, 'kt1759nb', 'tes'),
+(10, 'G1248kb', 'apa'),
+(11, 'ab2020kn', 'bocor');
 
 -- --------------------------------------------------------
 
@@ -211,7 +215,11 @@ CREATE TABLE `pajak` (
 
 INSERT INTO `pajak` (`id_pajak`, `plat`, `tgl_pajak`, `harga`) VALUES
 (4, 'kt1759nb', '2020-01-23', 1000000),
-(5, 'AB1729BX', '2021-06-11', 576000);
+(5, 'AB1729BX', '2021-06-11', 576000),
+(6, 'kt1759nb', '2020-02-22', 250000),
+(7, 'kt1759nb', '2020-02-23', 1111),
+(8, 'AB1729BX', '2020-02-23', 809999),
+(9, 'G1248kb', '2021-02-23', 800000);
 
 -- --------------------------------------------------------
 
@@ -281,7 +289,8 @@ INSERT INTO `pinjam_kar` (`id_pinjam_kar`, `id_karyawan`, `tgl_pinjam`, `waktu_p
 (11, '2', '2020-01-27', '13:01:00', '2020-01-28', '13:01:00', 'kampus', 'Wisuda'),
 (12, '1', '2020-02-09', '14:02:00', '2020-02-10', '14:02:00', 'sekolah', 'piknik'),
 (13, '1', '2020-02-11', '14:02:00', '2020-02-11', '14:02:00', 'rumah', 'keluarga'),
-(14, '3', '2020-02-08', '12:00:00', '2020-02-09', '12:00:00', 'Sekolah', 'tamasya');
+(14, '3', '2020-02-08', '12:00:00', '2020-02-09', '12:00:00', 'Sekolah', 'tamasya'),
+(15, '2', '2020-02-23', '06:06:00', '2020-02-24', '04:00:00', 'Sekolah', 'Arisan Keluarga');
 
 -- --------------------------------------------------------
 
@@ -408,7 +417,7 @@ ALTER TABLE `histerori_kerusakan`
 -- AUTO_INCREMENT untuk tabel `histori_maintenance`
 --
 ALTER TABLE `histori_maintenance`
-  MODIFY `id_his_maintenance` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_his_maintenance` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `histori_pajak`
@@ -426,13 +435,13 @@ ALTER TABLE `histori_pinjam`
 -- AUTO_INCREMENT untuk tabel `list_kerusakan`
 --
 ALTER TABLE `list_kerusakan`
-  MODIFY `id_listker` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_listker` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `pajak`
 --
 ALTER TABLE `pajak`
-  MODIFY `id_pajak` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_pajak` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `pinjam`
@@ -444,7 +453,7 @@ ALTER TABLE `pinjam`
 -- AUTO_INCREMENT untuk tabel `pinjam_kar`
 --
 ALTER TABLE `pinjam_kar`
-  MODIFY `id_pinjam_kar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_pinjam_kar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `tolak`

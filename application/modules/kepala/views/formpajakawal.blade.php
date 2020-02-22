@@ -14,14 +14,9 @@
         <select name="plat" class="form-control">
             <?php
             foreach ($daftarm as $a) :
-                foreach ($daftarp as $p) :
-
-                    if ($a['plat'] == $p['plat']) {
-                    } else {
             ?>
                         <option value="<?= $a['plat']; ?>"><?= $a['plat']; ?>- <?= $a['merk_type']; ?></option>
-            <?php }
-                endforeach;
+            <?php 
             endforeach; ?>
         </select>
     </div>

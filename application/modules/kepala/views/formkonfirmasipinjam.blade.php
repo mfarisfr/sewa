@@ -17,15 +17,6 @@
     <div class="form-group">
         <label for="plat"> Plat Mobil:</label>
         <select name="plat" class="form-control">
-            <!-- 
-        <?php
-        // $today=date ("Y-m-d"); -->
-        // $tgl_agenda = strtotime($ag['tgl_agenda']);
-        // $tgl_today = strtotime($today);
-        // if ($tgl_today < $tgl_agenda){
-        // fungsitampileven();
-        // } 
-        ?> -->
             <option selected>Pilih</option>
             <?php
             foreach ($daftarp as $p) :
