@@ -3,15 +3,13 @@
 @section('content')
 
 <center>
-
     <h1>Histori Pembayaran Pajak</h1>
-    <div class="container">
-    <div class="card shadow mb-4">
-      <div class="card-header py-3">
-      <div class="card-body">
-        <div class="row">
-            <table class="table table-striped">
-                <thead>
+</center>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <div class="card-body">
+            <table class="table">
+                <thead class="thead-light">
                     <tr>
                         <th scope="col">Plat Mobil</th>
                         <th scope="col">Harga</th>
@@ -32,12 +30,9 @@
                     endforeach;
                     ?>
                 </tbody>
+            </table>
         </div>
     </div>
-    </table>
-      </div>
-    </div>
-    </div>
-</center>
+</div>
 
 @endsection

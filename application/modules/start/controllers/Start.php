@@ -19,19 +19,20 @@ class Start extends MY_Controller {
     {
         if(isset($_POST['submit']))
         {
-            $nik = $this->input->post('nik');
+            $username = $this->input->post('username');
             $password = $this->input->post('password');
             $data = array
             (
-                'nik' => $nik,
-				'password' => $password
+                'akun_username' => $username,
+				'akun_password' => $password
             );
-            $cek = $this->login->cekLogin("karyawan",$data);
+            $cek = $this->login->cekLogin("username",$data);
             
 				 
             if($cek) // jika berhasil login
             {
-                $user=$this->login->get_by_nik("karyawan",$nik);
+                $users=$this->login->getJoinUser($username);
+                foreach ($users as $user) :
                 if($user['is_active']==1)
                 {
                     $id_kayawan=$user['id_karyawan'];
@@ -57,8 +58,9 @@ class Start extends MY_Controller {
                 }
                 else
                 {
-                    redirect('start?pesan=Gagal Login');
+                    redirect('start?pesan=Pegawai Tidak Aktif');
                 }
+                endforeach ;
             }
             else
             {

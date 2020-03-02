@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
       <form action="{{base_url('start/cek')}}" method="post">
         <div class="input-group mb-3">
-          <input type="username" class="form-control" placeholder="NIK" name="nik">
+          <input type="username" class="form-control" placeholder="Uername" name="username">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -42,14 +42,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
         </div>
         <div class="row">
-          <!-- <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="remember">
-              <label for="remember">
-                Remember Me
-              </label>
-            </div>
-          </div> -->
           <div class="col-4">
             <button type="submit" name="submit" class="btn btn-primary btn-block">Sign In</button>
           </div>

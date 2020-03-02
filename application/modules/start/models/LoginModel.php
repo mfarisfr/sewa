@@ -35,9 +35,9 @@ class LoginModel extends CI_Model {
 		}	
     }
     
-    function get_by_nik($table,$nik)
+    function getJoinUser($username)
     {
-        $user = $this->db->get_where($table,array("nik"=>$nik));
-        return $user->row_array();
+		$sql = "SELECT U.*,K.* from username U inner join karyawan K on U.id_karyawan = K.id_karyawan where U.akun_username = '$username'";
+		return $this->db->query($sql)->result_array();
     }
 }
