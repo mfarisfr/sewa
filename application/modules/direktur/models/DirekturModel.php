@@ -12,13 +12,13 @@ class DirekturModel extends CI_Model
 
     public function getHistoriMaintenance()
     {
-        $sql = "SELECT * from histori_maintenance";
+        $sql = "SELECT * from histori_maintenance ORDER BY id_his_maintenance DESC";
         return $this->db->query($sql)->result_array();
     }
 
     public function getHistoriPajak()
     {
-        $sql = "SELECT * from histori_pajak";
+        $sql = "SELECT * from histori_pajak ORDER BY id_his_pajak DESC";
         return $this->db->query($sql)->result_array();
     }
 
@@ -32,7 +32,7 @@ class DirekturModel extends CI_Model
     public function getJoinPinjam()
     {
         $sql = "SELECT K.*,P.*,N.*,M.* from pinjam_kar K inner join pinjam P on K.id_pinjam_kar=P.id_pinjam_kar 
-        inner join karyawan N on K.id_karyawan=N.id_karyawan inner join mobil M on M.plat=P.plat ";
+        inner join karyawan N on K.id_karyawan=N.id_karyawan inner join mobil M on M.plat=P.plat ORDER BY P.id_pinjam DESC";
         return $this->db->query($sql)->result_array();
     }
 
@@ -52,7 +52,8 @@ class DirekturModel extends CI_Model
     public function getjoinHistoriPinjam()
     {
         $sql = "SELECT K.*,P.*,N.*,H.* from pinjam P inner join histori_pinjam H on H.id_pinjam = P.id_pinjam 
-        inner join pinjam_kar N on P.id_pinjam_kar=N.id_pinjam_kar inner join karyawan K on N.id_karyawan=K.id_karyawan";
+        inner join pinjam_kar N on P.id_pinjam_kar=N.id_pinjam_kar 
+        inner join karyawan K on N.id_karyawan=K.id_karyawan ORDER BY P.id_pinjam DESC";
         return $this->db->query($sql)->result_array();
     }
 

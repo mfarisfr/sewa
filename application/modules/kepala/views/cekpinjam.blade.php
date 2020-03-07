@@ -11,7 +11,7 @@
                 <table class="table">
                     <thead class="thead-light">
                         <tr>
-                            <th scope="col">Id Pinjam </th>
+                            <th scope="col">No. </th>
                             <th scope="col">Nama Peminjam</th>
                             <th scope="col">Tanggal Pinjam</th>
                             <th scope="col">Waktu Pinjam</th>
@@ -29,11 +29,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($daftarp as $dp) :
+                        <?php $no =1; 
+                        foreach ($daftarp as $dp) :
                             if ($dp['status'] == "konfirmasi direktur" || $dp['status'] == "dipinjam") {
                         ?>
                                 <tr>
-                                    <td><?= $id = $dp['id_pinjam']; ?></td>
+                                    <?php $id = $dp['id_pinjam']; ?>
+                                    <td><?= $no; ?></td>
                                     <td><?= $dp['nama']; ?></td>
                                     <td><?= $dp['tgl_pinjam']; ?></td>
                                     <td><?= $dp['waktu_pinjam']; ?></td>
@@ -49,7 +51,7 @@
                                     <td><?= $dp['status']; ?></option>
                                     <td>
                                         <a href="<?= base_url('kepala/FormUpdatePinjam?u=' . $id); ?>">
-                                            <button class="btn btn-primary">Update</button>
+                                            <button class="btn btn-primary">Perbarui</button>
                                         </a>
                                     </td>
                                 </tr>

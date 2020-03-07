@@ -41,7 +41,7 @@
                     <td><?= $dp['merk_type']; ?></td>
 
                     <td>
-                        <!-- <a href="<?= base_url('kepala/Formcetak?u=' . $id); ?>"> -->
+                        <a href="<?= base_url('kepala/cetakfile?u=' . $id); ?>">
                         <button class="btn btn-primary">Cetak</button>
                         </a>
                     </td>

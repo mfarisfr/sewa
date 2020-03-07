@@ -29,7 +29,7 @@
                                     <td><?php echo $a['kondisi']; ?></td>
                                     <td>
                                         <a href="<?= base_url('kepala/pembaruanmobil?u=' . $id); ?>">
-                                            <button class="btn btn-primary">Perbaikan</button>
+                                            <button class="btn btn-primary">Perbarui</button>
                                         </a>
                                     </td>
                                 <?php

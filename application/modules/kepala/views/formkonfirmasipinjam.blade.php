@@ -38,7 +38,7 @@
             <option value="konfirmasi kepala">Konfirmasi Kepala</option>
         </select>
     </div>
-    <button type="submit" class="btn btn-default" name="submit">Kirim</button>
+    <button type="submit" class="btn btn-primary" name="submit">Kirim</button>
 </form>
       </div>
       </div>

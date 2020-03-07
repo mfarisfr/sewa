@@ -30,6 +30,7 @@ class KepalaModel extends CI_Model
 
     public function insertpajak($plat, $tgl_pajak, $harga)
     {
+        
         $sql = "insert into pajak values ('','$plat','$tgl_pajak','$harga')";
         $this->db->query($sql);
     }

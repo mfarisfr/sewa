@@ -1,4 +1,4 @@
-@layout('template/main/kepala/main')
+@layout('template/main/direktur/main')
 
 @section('content')
 <center>

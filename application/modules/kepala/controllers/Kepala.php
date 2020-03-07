@@ -220,13 +220,22 @@ class Kepala extends MY_Controller
 			$kondisi = $this->input->post('kondisi');
 			$kondisiper = $this->input->post('kondisiper');
 			$tgl_perbaikan = $this->input->post('tgl_perbaikan');
-			$this->model->insertHistoriMaintenance($id_listker, $plat, $kondisiper, $tgl_perbaikan);
-			$pw = array(
-				'plat' => $plat,
-				'kondisi' => $kondisi
-			);
-			$where = array('id_listker' => $id_listker);
-			$this->model->updateKerusakan("list_kerusakan", $pw, $where);
+			if ($kondisiper == "") {
+				$pw = array(
+					'plat' => $plat,
+					'kondisi' => $kondisi
+				);
+				$where = array('id_listker' => $id_listker);
+				$this->model->updateKerusakan("list_kerusakan", $pw, $where);
+			} else {
+				$this->model->insertHistoriMaintenance($id_listker, $plat, $kondisiper, $tgl_perbaikan);
+				$pw = array(
+					'plat' => $plat,
+					'kondisi' => $kondisi
+				);
+				$where = array('id_listker' => $id_listker);
+				$this->model->updateKerusakan("list_kerusakan", $pw, $where);
+			}
 			redirect('kepala/maintenance');
 		}
 	}
@@ -254,15 +263,6 @@ class Kepala extends MY_Controller
 				$this->model->insertKPinjam($id_pinjam_kar, $plat, $kondisi, $status);
 				redirect('kepala/konfirmasipinjam');
 			} else if ($status == "ditolak") {
-				// $pw = array(
-				// 	'plat' => $plat,
-				// 	'status' => $status,
-				// 	'km_awal' => $km_awal,
-				// 	'km_akhir' => $km_akhir,
-				// 	'kerusakan_akhir' => $kerusakan_akhir
-				// );
-				// $where = array('id_pinjam' => $id_pinjam);
-				// $this->model->updatePinjam("pinjam", $pw, $where);
 				$data['title'] = "YAYASAN SINAI INDONESIA";
 				$data['subtitle'] = "Penolakan Peminjaman";
 				$this->blade->render('tolakkep', $data);
@@ -298,16 +298,12 @@ class Kepala extends MY_Controller
 			$kerusakan_akhir = $this->input->post('kondisi_akhir');
 			if ($status == "kembali") {
 				$this->model->insertHistoriPeminjaman($id_pinjam);
+				$ganti = array(
+					'kondisi' => $kerusakan_akhir
+				);
+				$di = array('plat' => $plat);
+				$this->model->updateKerusakan("list_kerusakan", $ganti, $di);
 			} elseif ($status == "ditolak") {
-				// $pw = array(
-				// 	'plat' => $plat,
-				// 	'status' => $status,
-				// 	'km_awal' => $km_awal,
-				// 	'km_akhir' => $km_akhir,
-				// 	'kerusakan_akhir' => $kerusakan_akhir
-				// );
-				// $where = array('id_pinjam' => $id_pinjam);
-				// $this->model->updatePinjam("pinjam", $pw, $where);
 				$data['title'] = "YAYASAN SINAI INDONESIA";
 				$data['subtitle'] = "Penolakan Peminjaman";
 				$this->blade->render('tolakkep', $data);

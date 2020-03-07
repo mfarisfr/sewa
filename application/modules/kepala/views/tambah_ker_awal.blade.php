@@ -23,11 +23,6 @@
                     <textarea name="kondisi" cols="40" rows="5" class="form-control"></textarea>
                 </div>
 
-                <div class="form-group">
-                    <label for="tanggal">Tanggal</label>
-                    <input type="date" name="tanggal" class="form-control">
-                </div>
-
                 <button name="submit" type="submit" class="btn btn-primary">Tambah</button>
             </form>
         </div>

@@ -10,6 +10,7 @@
             <table class="table">
                 <thead class="thead-light">
                     <tr>
+                    <th scope="col">No.</th>
                         <th scope="col">Nama Peminjam</th>
                         <th scope="col">Tanggal Pinjam</th>
                         <th scope="col">Waktu Pinjam</th>
@@ -25,10 +26,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($daftarpin as $dp) :
+                    <?php $no = 1; 
+                    foreach ($daftarpin as $dp) :
                         if ($dp['status'] == "kembali") {
                     ?>
                             <tr>
+                                <td><?= $no; ?></td>
                                 <td><?= $dp['nama']; ?></td>
                                 <td><?= $dp['tgl_pinjam']; ?></td>
                                 <td><?= $dp['waktu_pinjam']; ?></td>
@@ -42,7 +45,7 @@
                                 <td><?= $dp['kerusakana_awal']; ?></td>
                                 <td><?= $dp['kerusakan_akhir']; ?></td>
                             </tr>
-                    <?php
+                    <?php $no++;
                         }
                     endforeach;
                     ?>

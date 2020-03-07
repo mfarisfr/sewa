@@ -11,7 +11,7 @@
                 <table class="table">
                     <thead class="thead-light">
                         <tr>
-                            <th scope="col">Id Pinjam Karyawan</th>
+                            <th scope="col">Id</th>
                             <th scope="col">Nama Peminjam</th>
                             <th scope="col">Tanggal Pinjam</th>
                             <th scope="col">Waktu Pinjam</th>

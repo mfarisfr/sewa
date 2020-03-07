@@ -23,12 +23,12 @@
     </div>
 
     <div class="form-group">
-        <label for="kondisi">Kondisi Saat Ini</label>
+        <label for="kondisi">Kondisi Mobil Saat Ini</label>
         <textarea name="kondisi" cols="40" rows="5" class="form-control" ><?= $per['kondisi']; ?></textarea>
     </div>
 
     <div class="form-group">
-        <label for="kondisiper">Kondisi Yang Diperbaiki</label>
+        <label for="kondisiper">Bagian Yang Sudah Diperbaiki</label>
         <textarea name="kondisiper" cols="40" rows="5" class="form-control" ></textarea>
     </div>
 

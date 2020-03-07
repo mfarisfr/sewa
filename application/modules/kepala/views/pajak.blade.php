@@ -16,7 +16,9 @@
                             <th scope="col">Plat Mobil</th>
                             <th scope="col">Harga</th>
                             <th scope="col">Tanggal Pajak</th>
+                            <th scope="col">Selisih</th>
                             <th scope="col">Aksi</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -29,6 +31,14 @@
                                 <td><?php echo $a['plat']; ?></td>
                                 <td><?php echo $a['harga']; ?></td>
                                 <td><?php echo $a['tgl_pajak']; ?></td>
+                                <td><?php 
+                                    $booking = new DateTime($a['tgl_pajak']);
+                                    $today= new DateTime();
+                                    $diff = $today->diff($booking);
+                                    echo $diff->days;
+                                    echo " Hari";
+                                    ?>
+                                </td>
                                 <td>
                                     <a href="<?= base_url('kepala/pembaruanpajak?u=' . $id); ?>">
                                         <button class="btn btn-primary">Perbarui</button>
