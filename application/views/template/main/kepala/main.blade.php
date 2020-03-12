@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="{{base_url('assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
   <link rel="stylesheet" href="{{base_url('assets/plugins/daterangepicker/daterangepicker.css')}}">
   <link rel="stylesheet" href="{{base_url('assets/plugins/summernote/summernote-bs4.css')}}">
+  <link rel="stylesheet" href="{{base_url('assets/dist/css/custom_notification.css')}}">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   @yield('scripts-css')
   <!-- PANGGIL UNTUK INJEK CSS KE TEMPAT INI -->
@@ -45,7 +46,7 @@
       </ul>
     </nav>
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
-      <a href="{{base_url('karyawan')}}" class="brand-link">
+      <a href="{{base_url('kepala')}}" class="brand-link">
         <img src="{{base_url('assets/dist/img/SekolahTeladan.jpeg')}}" alt="SekolahTeladan" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">Sekolah Teladan</span>
       </a>

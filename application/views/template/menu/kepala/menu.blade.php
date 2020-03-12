@@ -56,6 +56,11 @@
             <a href="{{base_url('kepala/pajak')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Pajak Mobil</p>
+                @if ($deadline > 0)
+                <span class="dot">
+                    {{ $deadline; }}
+                </span>
+                @endif
             </a>
         </li>
         <li class="nav-item">

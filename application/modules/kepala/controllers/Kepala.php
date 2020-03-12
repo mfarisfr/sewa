@@ -20,6 +20,7 @@ class Kepala extends MY_Controller
 	{
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "YAYASAN SINAI INDONESIA";
+		$data['deadline'] = $this->deadlinepajak();
 		$this->blade->render('kepala', $data);
 	}
 
@@ -27,6 +28,7 @@ class Kepala extends MY_Controller
 	{
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "Peminjaman MObil";
+		$data['deadline'] = $this->deadlinepajak();
 		$this->blade->render('formpinjamkep', $data);
 		if (isset($_POST['submit'])) {
 			$id_karyawan = $this->session->userdata('id_karyawan');
@@ -47,6 +49,7 @@ class Kepala extends MY_Controller
 		$data['subtitle'] = "Konfirmasi Peminjaman Mobil";
 		$data['daftarp'] = $this->model->getpinjam();
 		$data['daftarpk'] = $this->model->getJoinPinjamKar();
+		$data['deadline'] = $this->deadlinepajak();
 		$this->blade->render('konfirmasipinjamkep', $data);
 	}
 
@@ -57,6 +60,7 @@ class Kepala extends MY_Controller
 		$data['subtitle'] = "Form Tanggapan";
 		$data['daftarm'] = $this->model->getMobil();
 		$data['daftarp'] = $this->model->getJoinMobilPajak();
+		$data['deadline'] = $this->deadlinepajak();
 		$this->blade->render('formkonfirmasipinjam', $data);
 	}
 
@@ -66,6 +70,7 @@ class Kepala extends MY_Controller
 		$data['subtitle'] = "Pajak Awal Mobil";
 		$data['daftarm'] = $this->model->getMobil();
 		$datap = $this->model->getJoinMobilPajak();
+		$data['deadline'] = $this->deadlinepajak();
 		$this->blade->render('formpajakawal', $data);
 		if (isset($_POST['submit'])) {
 			$plat = $this->input->post('plat');
@@ -87,6 +92,7 @@ class Kepala extends MY_Controller
 		$data['subtitle'] = "Kerusakan Awal Mobil";
 		$data['daftarm'] = $this->model->getMobil();
 		$datar = $this->model->getListker();
+		$data['deadline'] = $this->deadlinepajak();
 		$this->blade->render('tambah_ker_awal', $data);
 		if (isset($_POST['submit'])) {
 			$plat = $this->input->post('plat');
@@ -106,6 +112,8 @@ class Kepala extends MY_Controller
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "Daftar Mobil";
 		$data['daftarm'] = $this->model->getMobil();
+		$data['deadline'] = $this->deadlinepajak();
+		$data['deadline'] = $this->deadlinepajak();
 		$this->blade->render('tampilmobil', $data);
 	}
 
@@ -113,6 +121,7 @@ class Kepala extends MY_Controller
 	{
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "Tambah Data Mobil";
+		$data['deadline'] = $this->deadlinepajak();
 		$this->blade->render('formtambahmobil', $data);
 		if (isset($_POST['submit'])) {
 			$platn = $this->input->post('plat');
@@ -155,6 +164,7 @@ class Kepala extends MY_Controller
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "Pajak Mobil";
 		$data['daftarp'] = $this->model->getPajak();
+		$data['deadline'] = $this->deadlinepajak();
 		$this->blade->render('pajak', $data);
 	}
 
@@ -164,6 +174,7 @@ class Kepala extends MY_Controller
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "Pajak Mobil";
 		$data['paj'] = $this->model->get_by_id_pajak("pajak", $id_pajak);
+		$data['deadline'] = $this->deadlinepajak();
 		$this->blade->render('formpembaruanpajak', $data);
 	}
 
@@ -192,6 +203,7 @@ class Kepala extends MY_Controller
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "Pajak Mobil";
 		$data['daftarp'] = $this->model->getHistoriPajak();
+		$data['deadline'] = $this->deadlinepajak();
 		$this->blade->render('historipajak', $data);
 	}
 
@@ -200,6 +212,7 @@ class Kepala extends MY_Controller
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "Maintenance Mobil";
 		$data['daftarm'] = $this->model->getListKer();
+		$data['deadline'] = $this->deadlinepajak();
 		$this->blade->render('maintenanceM', $data);
 	}
 
@@ -208,6 +221,7 @@ class Kepala extends MY_Controller
 		$id_listker = $_GET['u'];
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "Perbaikan Mobil";
+		$data['deadline'] = $this->deadlinepajak();
 		$data['per'] = $this->model->get_by_id_listker("list_kerusakan", $id_listker);
 		$this->blade->render('formperbaikanmobil', $data);
 	}
@@ -245,6 +259,7 @@ class Kepala extends MY_Controller
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "Histori Maintenance";
 		$data['daftarm'] = $this->model->getHistoriMaintenance();
+		$data['deadline'] = $this->deadlinepajak();
 		$this->blade->render('histori_maintenance', $data);
 	}
 
@@ -275,6 +290,7 @@ class Kepala extends MY_Controller
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "Pengecekan Status Peminjaman Mobil";
 		$data['daftarp'] = $this->model->getJoinPinjam();
+		$data['deadline'] = $this->deadlinepajak();
 		$this->blade->render('cekpinjam', $data);
 	}
 
@@ -283,6 +299,7 @@ class Kepala extends MY_Controller
 		$id_pinjam = $_GET['u'];
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "Pembaruan Peminjaman";
+		$data['deadline'] = $this->deadlinepajak();
 		$data['pin'] = $this->model->get_by_id_pinjam("pinjam", $id_pinjam);
 		$this->blade->render('formpembaruanpinjam', $data);
 	}
@@ -326,6 +343,7 @@ class Kepala extends MY_Controller
 	{
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "";
+		$data['deadline'] = $this->deadlinepajak();
 		$id_karyawan = $this->session->userdata('id_karyawan');
 		$data['daftarp'] = $this->model->getJoinPinjamC($id_karyawan);
 		$this->blade->render('tabelcetakkep', $data);
@@ -336,6 +354,7 @@ class Kepala extends MY_Controller
 		$id_pinjam = $_GET['u'];
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "Cetak File";
+		$data['deadline'] = $this->deadlinepajak();
 		$data['daftarp'] = $this->model->getjoincetak($id_pinjam);
 
 		$this->blade->render('cetakkep', $data);
@@ -357,6 +376,7 @@ class Kepala extends MY_Controller
 		$data['daftarp'] = $this->model->getjointolak($id_karyawan);
 		$data['title'] = "YAYASAN SINAI INDONESIA";
 		$data['subtitle'] = "";
+		$data['deadline'] = $this->deadlinepajak();
 		$this->blade->render('pemberitahuankep', $data);
 	}
 
@@ -368,5 +388,23 @@ class Kepala extends MY_Controller
 		$data['daftarp'] = $this->model->notifpajak($plat);
 
 		$this->blade->render('notif', $data);
+	}
+
+	public function deadlinepajak()
+	{
+		$data_pajak = $this->model->getPajak();
+		$data['deadline'] = 0;
+		$today = new DateTime();
+
+
+		foreach ($data_pajak as $item) {
+			$date = new DateTime($item['tgl_pajak']);
+			$diff = $today->diff($date);
+			if ($diff->days <= 7) {
+				$data['deadline']++;
+			}
+		}
+
+		return $data['deadline'];
 	}
 }
