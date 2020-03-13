@@ -10,9 +10,7 @@
 <form method="POST" action="{{base_url('kepala/konfirmpinjam')}}">
     <div class="form-group">
         <label for="id_pinjam_kar"> Id :</label>
-        <select name="id_pinjam_kar" class="form-control">
-            <option value="<?= $id_pinjam_kar ?>"><?= $id_pinjam_kar ?></option>
-        </select>
+        <input type="number" name="id_pinjam_kar" class="form-control" placeholder="<?= $id_pinjam_kar ?>" value="<?= $id_pinjam_kar ?>" readonly>
     </div>
     <div class="form-group">
         <label for="plat"> Plat Mobil:</label>

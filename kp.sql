@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Feb 2020 pada 08.21
+-- Waktu pembuatan: 13 Mar 2020 pada 05.12
 -- Versi server: 10.1.36-MariaDB
 -- Versi PHP: 7.2.10
 
@@ -55,13 +55,8 @@ CREATE TABLE `histori_maintenance` (
 --
 
 INSERT INTO `histori_maintenance` (`id_his_maintenance`, `id_listker`, `plat`, `kondisi`, `tgl_perbaikan`) VALUES
-(3, 3, 'kt1759nb', 'baret pintu belakang bagian kiri', '2020-01-20'),
-(4, 4, 'AB1729BX', 'Kaca Belakang Pecah', '2020-01-20'),
-(5, 4, 'AB1729BX', 'Penyokk Belakang', '2020-01-22'),
-(6, 5, 'G1248kb', 'Kaca Belakang Pecah', '2020-01-23'),
-(7, 5, 'G1248kb', 'kaca depan pecah', '0000-00-00'),
-(8, 7, 'kt1759nb', '', '2020-02-14'),
-(9, 8, 'kt1759nb', '1. kaca pecah', '2020-02-14');
+(1, 2, 'AB1729BX', '1. Gesekan sedikit dibagian belakang mobil', '2020-03-07'),
+(2, 2, 'AB1729BX', '1. Ban belakang kiri bocor', '2020-03-08');
 
 -- --------------------------------------------------------
 
@@ -83,11 +78,10 @@ CREATE TABLE `histori_pajak` (
 --
 
 INSERT INTO `histori_pajak` (`id_his_pajak`, `id_pajak`, `plat`, `tgl_pajak`, `tgl_bayar`, `harga`) VALUES
-(2, 4, 'kt1759nb', '2021-07-17', '0000-00-00', 809999),
-(4, 5, 'AB1729BX', '2021-06-09', '2020-01-19', 275000),
-(5, 4, 'kt1759nb', '2021-12-25', '2020-01-20', 540000),
-(6, 5, 'AB1729BX', '2021-06-11', '2020-01-20', 576000),
-(7, 4, 'kt1759nb', '2020-01-23', '2020-01-22', 1000000);
+(1, 2, 'AB1729BX', '2021-03-07', '2020-03-07', 95000),
+(2, 3, 'AB3321BC', '2021-03-12', '2020-03-12', 750000),
+(3, 3, 'AB3321BC', '2020-03-15', '2020-03-13', 320000),
+(4, 2, 'AB1729BX', '2020-03-17', '2020-03-13', 300000);
 
 -- --------------------------------------------------------
 
@@ -105,9 +99,8 @@ CREATE TABLE `histori_pinjam` (
 --
 
 INSERT INTO `histori_pinjam` (`id_his_pinjam`, `id_pinjam`) VALUES
-(1, 1),
-(2, 9),
-(3, 10);
+(1, 2),
+(2, 3);
 
 -- --------------------------------------------------------
 
@@ -124,18 +117,17 @@ CREATE TABLE `karyawan` (
   `id_divisi` varchar(50) NOT NULL,
   `nama_jabatan` varchar(50) NOT NULL,
   `id_jabatan` varchar(50) NOT NULL,
-  `is_active` int(11) NOT NULL,
-  `password` varchar(10) NOT NULL
+  `is_active` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `karyawan`
 --
 
-INSERT INTO `karyawan` (`id_karyawan`, `nama`, `nik`, `niy`, `nama_disvisi`, `id_divisi`, `nama_jabatan`, `id_jabatan`, `is_active`, `password`) VALUES
-('1', 'akyu', '1', '1', 'desain', '1', 'karyawan', '1', 1, '1'),
-('2', 'saya', '2', '2', 'mobil', '2', 'kepala', '2', 1, '2'),
-('3', 'coba', '3', '3', 'atasan', '3', 'direktur', '3', 1, '3');
+INSERT INTO `karyawan` (`id_karyawan`, `nama`, `nik`, `niy`, `nama_disvisi`, `id_divisi`, `nama_jabatan`, `id_jabatan`, `is_active`) VALUES
+('1', 'Agus Salim', '123', '123', 'Guru', '1', 'karyawan', '1', 1),
+('2', 'Yahya', '212', '212', 'Prasarana', '2', 'kepala', '2', 1),
+('3', 'Bambang Pamungkas', '3', '3', 'Pengurus', '3', 'direktur', '3', 1);
 
 -- --------------------------------------------------------
 
@@ -154,15 +146,7 @@ CREATE TABLE `list_kerusakan` (
 --
 
 INSERT INTO `list_kerusakan` (`id_listker`, `plat`, `kondisi`) VALUES
-(3, 'kt1759nb', ''),
-(4, 'AB1729BX', ''),
-(5, 'G1248kb', ''),
-(6, 'kt1759nb', 'kacanya pecah, ban pecah,'),
-(7, 'kt1759nb', ''),
-(8, 'kt1759nb', '1. ban pecah\r\n'),
-(9, 'kt1759nb', 'tes'),
-(10, 'G1248kb', 'apa'),
-(11, 'ab2020kn', 'bocor');
+(2, 'AB1729BX', '1. Lecet deket plat belakang');
 
 -- --------------------------------------------------------
 
@@ -191,10 +175,8 @@ CREATE TABLE `mobil` (
 --
 
 INSERT INTO `mobil` (`plat`, `nama_pemilik`, `alamat`, `merk_type`, `jenis_model`, `tahun`, `warna_kb`, `isi_silinder`, `no_rangka`, `no_mesin`, `no_bpkb`, `bahan_bakar`, `warna_tnkb`) VALUES
-('AB1729BX', 'rahman', 'Maguwoharjo', 'Xenia LX', 'Minibus', '2019', 'Biru', '1700', 'tsg73627ggxtw666', 'gsaasg62627sasaa', 'agsga676', 'Solar', 'Biru'),
-('ab2020kn', 'sugiyo', 'jogja atas', 'ayla', 'Minibus', '2017', 'hitam', '1700', '9ujknsjd', 'huysdbnsjasd', 'hdidshidhdm', 'bensin', 'hitam'),
-('G1248kb', 'Gina ', 'Jl Babarsari no 3', 'Ferrari ', 'Sport', '2017', 'Merah', '2500', 'hd8389whfjijds8', 'dhusih990', 'djhuhhf898889', 'Solar', 'Merah'),
-('kt1759nb', 'Rahman', 'Jl Msaid Samarinda', 'Toyota Avanza G', 'Minibus', '2017', 'Hitam', '1800', '828dhdh992910', 'ssa92839902n', 'dhdkwi993hs', 'Bensin', 'Hitam');
+('AB1729BX', 'Bagus', 'jl maguwoharjo 125 sambilegi lor', 'XENIA LX', 'MINIBUS', '2019', 'Hitam', '1700', 'tsg73627ggxtw666', 'gsaasg62627sasa', 'agsga676', 'Bensin', 'Hitam'),
+('AB3321BC', 'Rahman', 'jl Stadion', 'AVANZA G', 'MINIBUS', '2018', 'Biru', '1800', 'jdhihd99ii331', 'jjks09093jj', 'jijdi990', 'Bensin', 'Hitam');
 
 -- --------------------------------------------------------
 
@@ -214,12 +196,8 @@ CREATE TABLE `pajak` (
 --
 
 INSERT INTO `pajak` (`id_pajak`, `plat`, `tgl_pajak`, `harga`) VALUES
-(4, 'kt1759nb', '2020-01-23', 1000000),
-(5, 'AB1729BX', '2021-06-11', 576000),
-(6, 'kt1759nb', '2020-02-22', 250000),
-(7, 'kt1759nb', '2020-02-23', 1111),
-(8, 'AB1729BX', '2020-02-23', 809999),
-(9, 'G1248kb', '2021-02-23', 800000);
+(2, 'AB1729BX', '2020-03-17', 300000),
+(3, 'AB3321BC', '2020-03-15', 320000);
 
 -- --------------------------------------------------------
 
@@ -243,17 +221,9 @@ CREATE TABLE `pinjam` (
 --
 
 INSERT INTO `pinjam` (`id_pinjam`, `id_pinjam_kar`, `plat`, `km_awal`, `km_akhir`, `kerusakana_awal`, `kerusakan_akhir`, `status`) VALUES
-(1, 1, 'kt1759nb', 1500, 2000, 'penyok samping body', '', '3'),
-(9, 3, 'AB1729BX', 0, 0, 'Penyokk Belakang', '', '5'),
-(10, 5, 'AB1729BX', 2500, 3000, 'Penyokk Belakang', '', '5'),
-(11, 2, 'AB1729BX', 0, 0, 'Penyokk Belakang', '', '0'),
-(12, 6, 'G1248kb', 1000, 0, '', '', '4'),
-(13, 7, 'G1248kb', 0, 0, 'Kaca Belakang Pecah', '', '3'),
-(14, 8, 'G1248kb', 0, 0, '', '', '0'),
-(15, 10, 'AB1729BX', 0, 0, '', '', 'konfirmasi direktur'),
-(16, 9, 'kt1759nb', 0, 0, '', '', 'konfirmasi direktur'),
-(17, 11, 'kt1759nb', 0, 0, '', '', 'konfirmasi kepala'),
-(18, 12, 'kt1759nb', 0, 0, '', '', 'konfirmasi kepala');
+(2, 2, 'AB1729BX', 4000, 4500, '', '1. lecet sedikit bagian belakang dekat plat', 'kembali'),
+(3, 3, 'AB1729BX', 3000, 3250, '', '1. Lecet deket plat belakang', 'kembali'),
+(4, 4, 'AB1729BX', 0, 0, '1. Lecet deket plat belakang', '', 'konfirmasi direktur');
 
 -- --------------------------------------------------------
 
@@ -277,20 +247,9 @@ CREATE TABLE `pinjam_kar` (
 --
 
 INSERT INTO `pinjam_kar` (`id_pinjam_kar`, `id_karyawan`, `tgl_pinjam`, `waktu_pinjam`, `tgl_kembali`, `waktu_kembali`, `tempat`, `acara`) VALUES
-(1, '1', '2020-01-01', '14:02:00', '0002-02-02', '14:02:00', 'kampus', 'kematian'),
-(2, '3', '2020-01-01', '14:02:00', '2020-03-03', '15:03:00', 'rumah', 'keluarga'),
-(3, '2', '2020-01-09', '01:03:00', '2020-03-12', '15:03:00', 'sekolah', 'liburan'),
-(5, '2', '2020-01-01', '13:11:00', '2020-01-02', '13:01:00', 'disini', 'rahasia'),
-(6, '2', '2020-01-23', '14:02:00', '2020-01-24', '14:02:00', 'Sekolah', 'Keluarga'),
-(7, '1', '2020-01-22', '12:00:00', '2020-01-23', '12:00:00', 'Sekolah', 'sekolah'),
-(8, '1', '2020-01-25', '14:02:00', '2020-01-26', '14:02:00', 'Sekolah Teladan', 'Pribadi'),
-(9, '1', '2020-01-25', '14:02:00', '2020-01-26', '14:02:00', 'Bandara', 'Disewa Teman'),
-(10, '1', '2020-01-27', '15:03:00', '2020-01-28', '15:03:00', 'Sekolah', 'Arisan'),
-(11, '2', '2020-01-27', '13:01:00', '2020-01-28', '13:01:00', 'kampus', 'Wisuda'),
-(12, '1', '2020-02-09', '14:02:00', '2020-02-10', '14:02:00', 'sekolah', 'piknik'),
-(13, '1', '2020-02-11', '14:02:00', '2020-02-11', '14:02:00', 'rumah', 'keluarga'),
-(14, '3', '2020-02-08', '12:00:00', '2020-02-09', '12:00:00', 'Sekolah', 'tamasya'),
-(15, '2', '2020-02-23', '06:06:00', '2020-02-24', '04:00:00', 'Sekolah', 'Arisan Keluarga');
+(2, '2', '2020-03-08', '06:00:00', '2020-03-08', '22:00:00', 'Sekolah', 'Liburan Keluarga'),
+(3, '2', '2020-03-09', '05:30:00', '2020-03-09', '04:00:00', 'Sekolah', 'Keluarga'),
+(4, '1', '2020-03-14', '07:00:00', '2020-03-15', '19:00:00', 'Rumah', 'Keluarga');
 
 -- --------------------------------------------------------
 
@@ -304,14 +263,28 @@ CREATE TABLE `tolak` (
   `keterangan` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data untuk tabel `tolak`
+-- Struktur dari tabel `username`
 --
 
-INSERT INTO `tolak` (`id_tolak`, `id_pinjam_kar`, `keterangan`) VALUES
-(1, 13, 'ganti hari sabtu'),
-(2, 14, 'saya tidak suka dengan bapak'),
-(8, 11, 'saya juga tidak suka dengan bapak');
+CREATE TABLE `username` (
+  `id_karyawan` varchar(50) NOT NULL,
+  `akun_username` varchar(20) NOT NULL,
+  `akun_password` varchar(20) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `username`
+--
+
+INSERT INTO `username` (`id_karyawan`, `akun_username`, `akun_password`, `created_at`, `updated_at`) VALUES
+('1', '001', '123', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+('2', '002', '123', '2020-03-02 10:39:00', '0000-00-00 00:00:00'),
+('3', '003', '123', '2020-03-02 11:12:00', '0000-00-00 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -404,6 +377,13 @@ ALTER TABLE `tolak`
   ADD KEY `fkkp_id_pinjam_kar` (`id_pinjam_kar`);
 
 --
+-- Indeks untuk tabel `username`
+--
+ALTER TABLE `username`
+  ADD UNIQUE KEY `akun_username` (`akun_username`),
+  ADD KEY `fid_karyawan` (`id_karyawan`);
+
+--
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
@@ -417,49 +397,49 @@ ALTER TABLE `histerori_kerusakan`
 -- AUTO_INCREMENT untuk tabel `histori_maintenance`
 --
 ALTER TABLE `histori_maintenance`
-  MODIFY `id_his_maintenance` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_his_maintenance` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `histori_pajak`
 --
 ALTER TABLE `histori_pajak`
-  MODIFY `id_his_pajak` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_his_pajak` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `histori_pinjam`
 --
 ALTER TABLE `histori_pinjam`
-  MODIFY `id_his_pinjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_his_pinjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `list_kerusakan`
 --
 ALTER TABLE `list_kerusakan`
-  MODIFY `id_listker` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_listker` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `pajak`
 --
 ALTER TABLE `pajak`
-  MODIFY `id_pajak` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_pajak` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `pinjam`
 --
 ALTER TABLE `pinjam`
-  MODIFY `id_pinjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_pinjam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `pinjam_kar`
 --
 ALTER TABLE `pinjam_kar`
-  MODIFY `id_pinjam_kar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_pinjam_kar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `tolak`
 --
 ALTER TABLE `tolak`
-  MODIFY `id_tolak` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_tolak` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -522,6 +502,12 @@ ALTER TABLE `pinjam_kar`
 --
 ALTER TABLE `tolak`
   ADD CONSTRAINT `fkkp_id_pinjam_kar` FOREIGN KEY (`id_pinjam_kar`) REFERENCES `pinjam_kar` (`id_pinjam_kar`);
+
+--
+-- Ketidakleluasaan untuk tabel `username`
+--
+ALTER TABLE `username`
+  ADD CONSTRAINT `fid_karyawan` FOREIGN KEY (`id_karyawan`) REFERENCES `karyawan` (`id_karyawan`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

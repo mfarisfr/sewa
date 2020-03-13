@@ -1,6 +1,6 @@
 <li class="nav-item has-treeview menu-open">
     <a href="#" class="nav-link active">
-        <i class="nav-icon fas fa-tachometer-alt"></i>
+    <i class="fas fa-car-side"></i>
         <p>
             Penyewaan
             <i class="right fas fa-angle-left"></i>
@@ -31,7 +31,7 @@
 </li>
 <li class="nav-item has-treeview menu-open">
     <a href="#" class="nav-link active">
-        <i class="nav-icon fas fa-tachometer-alt"></i>
+    <i class="fas fa-user-circle"></i>
         <p>
             Direktur
             <i class="right fas fa-angle-left"></i>

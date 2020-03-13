@@ -113,7 +113,6 @@ class Kepala extends MY_Controller
 		$data['subtitle'] = "Daftar Mobil";
 		$data['daftarm'] = $this->model->getMobil();
 		$data['deadline'] = $this->deadlinepajak();
-		$data['deadline'] = $this->deadlinepajak();
 		$this->blade->render('tampilmobil', $data);
 	}
 
@@ -280,6 +279,7 @@ class Kepala extends MY_Controller
 			} else if ($status == "ditolak") {
 				$data['title'] = "YAYASAN SINAI INDONESIA";
 				$data['subtitle'] = "Penolakan Peminjaman";
+				$data['deadline'] = $this->deadlinepajak();
 				$this->blade->render('tolakkep', $data);
 			}
 		}
